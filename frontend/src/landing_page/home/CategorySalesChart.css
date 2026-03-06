@@ -1,0 +1,63 @@
+/* CategoryDoughnutChart.css */
+.chart-container {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 650px;
+   margin-top: 20px;
+   margin-bottom: 20px;
+  }
+  
+  .chart-title {
+    font-size: 1.7rem;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .pie-chart {
+    margin: 0 auto;
+  }
+  
+  .custom-tooltip {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    color: #333;
+  }
+  
+  .custom-tooltip p {
+    margin: 0;
+  }
+  
+  .recharts-default-legend {
+    font-size: 0.9em;
+    color: #555;
+  }
+  
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .chart-container {
+      padding: 10px;
+      max-width: 100%;
+    }
+  
+    .chart-title {
+      font-size: 1.2em;
+    }
+  
+    .pie-chart {
+      width: 100%;
+      height: auto;
+    }
+  }
+  
+  .overview{
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: rgb(107, 114, 128);
+
+  }

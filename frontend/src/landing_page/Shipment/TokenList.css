@@ -1,0 +1,259 @@
+.nsc-token-list-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .nsc-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .nsc-section-header h1 {
+    font-size: 2rem;
+    color: #a19bf7;
+    margin: 0;
+  }
+  
+  .nsc-token-count {
+    background-color: #f0f4f8;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    color: #556cd6;
+    font-weight: 500;
+  }
+  
+  .nsc-loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+  }
+  
+  .nsc-loading-spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    color: white;
+    border-left-color: #556cd6;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  .nsc-token-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .nsc-token-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .nsc-token-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  }
+  
+  .nsc-token-header {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid #eaedf3;
+  }
+  
+  .nsc-token-logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 1rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #f0f4f8;
+  }
+  .nsc-token-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    height: 100%;
+  }
+  
+  .nsc-token-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: black;
+    display: block;
+    margin: auto;
+    position: relative;
+    top: -5px; /* Adjust this value to move the logo up */
+  }
+  
+  .nsc-token-title {
+    flex: 1;
+  }
+  
+  .nsc-token-title h2 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.25rem;
+    color: #2a2a42;
+  }
+  
+  .nsc-token-symbol {
+    font-size: 0.95rem;
+    color: #6b7280;
+    font-weight: 500;
+    background-color: #f0f4f8;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+  
+  .nsc-token-details {
+    padding: 1.5rem;
+  }
+  
+  .nsc-info-item {
+    margin-bottom: 1rem;
+  }
+  
+  .nsc-info-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .nsc-info-label {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-bottom: 0.25rem;
+  }
+  
+  .nsc-info-value {
+    font-size: 0.95rem;
+    color:#9d9af7;
+    font-weight: 500;
+  }
+  
+  .nsc-address-value {
+    display: flex;
+    align-items: center;
+    background-color: #f7f9fc;
+    padding: 0.5rem;
+    border-radius: 6px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+  }
+  
+  .nsc-copy-btn {
+    background: none;
+    border: none;
+    color: #556cd6;
+    cursor: pointer;
+    padding: 0.25rem;
+    margin-left: 0.5rem;
+    border-radius: 4px;
+  }
+  
+  .nsc-copy-btn:hover {
+    background-color: rgba(85, 108, 214, 0.1);
+  }
+  
+  .nsc-notification {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .nsc-error-notification {
+    background-color: #fee2e2;
+    border-left: 4px solid #ef4444;
+    color: #b91c1c;
+  }
+  
+  .nsc-notification i {
+    font-size: 1.25rem;
+    margin-right: 0.75rem;
+  }
+  
+  .nsc-notification p {
+    flex: 1;
+    margin: 0;
+  }
+  
+  .nsc-close-notification {
+    background: none;
+    border: none;
+    color: currentColor;
+    opacity: 0.7;
+    cursor: pointer;
+  }
+  
+  .nsc-close-notification:hover {
+    opacity: 1;
+  }
+  
+  .nsc-no-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    background-color: #f7f9fc;
+    border-radius: 12px;
+    text-align: center;
+  }
+  
+  .nsc-no-data i {
+    font-size: 2.5rem;
+    color: #cbd5e1;
+    margin-bottom: 1rem;
+  }
+  
+  .nsc-no-data p {
+    color: #64748b;
+    font-size: 1.1rem;
+    margin: 0;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .nsc-token-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .nsc-token-list-container {
+      padding: 1rem;
+    }
+    
+    .nsc-section-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .nsc-token-count {
+      margin-top: 0.5rem;
+    }
+  }
+
+  .button-disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  .button-disabled:hover {
+    background-color: initial; /* Prevents any hover effect */
+  }

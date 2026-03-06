@@ -1,0 +1,163 @@
+/* Wrapper for the entire medication section */
+.medication-wrapper {
+  max-width: 900px;
+
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.medication-wrapper h1 {
+  text-align: center;
+  color: #28a745; /* Green color for chart title */
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+.medication-page-wrapper{
+  
+ margin-right: 15px;
+  margin-top: 20px;
+
+ 
+  font-family: "Poppins";
+  background-color: #f4f7fb;
+  padding: 15px;
+  border-radius: 10px;
+}
+/* Fetch Medications Button */
+.medication-fetch-button {
+  background-color: #6366F1; /* Purple color */
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.medication-fetch-button:hover {
+  background-color: #4F46E5; /* Darker purple */
+  transform: scale(1.05);
+}
+
+.medication-fetch-button:disabled {
+  background-color: #a1a1a1;
+  cursor: not-allowed;
+}
+
+/* Loading and Error Messages */
+.medication-loading,
+.medication-error,
+.medication-empty {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.medication-loading {
+  font-size: 18px;
+  color: #4F46E5; /* Purple color */
+}
+
+.medication-error {
+  color: red;
+  font-weight: bold;
+}
+
+.medication-empty {
+  font-size: 18px;
+  color: #999;
+}
+
+/* Table Styling */
+.medication-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.medication-table th, .medication-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+.medication-table th {
+  background-color: #6366F1; /* Purple */
+  color: white;
+  font-weight: 600;
+}
+
+.medication-table td {
+  background-color: #fff;
+  font-size: 16px;
+}
+
+/* Button inside the table for showing/hiding medications */
+.medication-fetch-button {
+  background-color: #4F46E5; /* Darker purple */
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.medication-fetch-button:hover {
+  background-color: #4338CA;
+}
+
+/* Medication List Styling */
+.medication-list {
+  list-style: none;
+  padding: 0;
+}
+
+.medication-item {
+  background-color: #EDE9FE; /* Light purple */
+  color: #333;
+  padding: 8px 10px;
+  margin: 5px 0;
+  border-radius: 4px;
+  font-size: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.medication-item:hover {
+  background-color: #D8B4FE; /* Slightly darker purple */
+}
+
+/* Styling for the Chart Section Header */
+.chart-wrapper h1 {
+  color: #4F46E5; /* Purple color for chart section title */
+  font-size: 1.8rem;
+  text-align: center;
+  margin-top: 40px;
+  font-weight: bold;
+}
+
+/* Extra Styles for the Chart Header */
+h1 {
+  color: #4F46E5; /* Consistent purple for all h1 */
+  font-size: 1.8rem;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* Layout-related styles */
+.content-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.chart-wrapper {
+  max-width: 900px;
+    
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

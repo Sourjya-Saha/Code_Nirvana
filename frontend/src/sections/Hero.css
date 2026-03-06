@@ -1,0 +1,205 @@
+/* Hero.css */
+
+.hero-section {
+    padding-top: 2rem; /* pt-8 */
+    padding-bottom: 5rem; /* pb-20 */
+    height: 780px;
+    background: radial-gradient(ellipse 200% 100% at bottom left, #183EC2, #EAEEFE 100%);
+    overflow-x: hidden; /* overflow-x-clip */
+    overflow-y:hidden ;
+  }
+  @media (min-width: 768px) {
+    .hero-section {
+        padding-bottom: 2.5rem /* 40px */;
+    }
+}
+  
+.contain-hero {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+@media (min-width: 375px) {
+    .contain-hero {
+        max-width: 375px;
+    }
+}
+@media (min-width: 768px) {
+    .contain-hero {
+        max-width: 768px;
+    }
+}
+@media (min-width: 1200px) {
+    .contain-hero {
+        max-width: 1200px;
+        padding-right: 80px;
+        padding-left: 80px;
+    }
+}
+  
+  .hero-flex {
+    display: flex;
+    align-items: center;
+  }
+  @media (min-width: 768px) {
+    .hero-flex {
+        display: flex;
+    }
+}
+.hero-left {
+    width: auto; /* Default width */
+  }
+  /* Apply width of 478px on medium and larger screens */
+  @media (min-width: 768px) {
+    .hero-left {
+      width: 478px; /* Width set to 478px on medium screens and above */
+    }
+  }
+  .version-tag {
+    font-size: 0.875rem; /* text-sm */
+    display: inline-flex;
+    border: 1px solid rgba(34, 34, 34, 0.1);
+    padding: 0.25rem 0.75rem; /* px-3 py-1 */
+    border-radius: 0.5rem; /* rounded-lg */
+    letter-spacing: -0.015em; /* tracking-tight */
+  }
+  
+  /* Styles.css or your existing CSS file */
+
+.hero-title {
+    font-size: 3rem; /* text-5xl */
+    line-height: 1;
+    text-align: left;
+    font-weight: bold; /* font-bold */
+    font-family: 'Poppins';
+    letter-spacing: -0.015em; /* tracking-tighter */
+    background: linear-gradient(to bottom, black, #001E80); /* bg-gradient-to-b from-black to-[#001E80] */
+    -webkit-background-clip: text; /* Clip the background to the text */
+    color: transparent; /* text-transparent */
+    margin-top: 1.5rem; /* mt-6 */
+
+  }
+  
+  /* Media query for medium screens and above */
+  @media (min-width: 768px) {
+    .hero-title {
+        font-size: 4.5rem /* 72px */;
+        line-height: 1;
+    }
+  }
+  
+  
+  .hero-description {
+    font-size: 1.1rem;
+    font-family: 'Poppins';
+    line-height: 1.75rem ; /* text-xl */
+    color: #010D3E; /* text-[#010D3E] */
+    letter-spacing: -0.015em; /* tracking-tighter */
+    margin-top: 1.5rem; /* mt-6 */
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 0.25rem; /* gap-1 */
+    align-items: center;
+    margin-top: 30px; /* mt-[30px] */
+  }
+  
+  .btnn {
+    background-color: black;
+    color: white;
+    padding: 0.5rem 1rem; /* px-4 py-2 */
+    border-radius: 0.5rem; /* rounded-lg */
+    font-weight: 500; /* font-medium */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -0.015em; /* tracking-tighter */
+  }
+  
+  .btnn-primary {
+    background-color: #000000; /* bg-black */
+  color: #FFFFFF; /* text-white */
+  }
+  
+  .btnn-text {
+    color: #000000; /* text-black */
+    background-color: transparent; /* bg-transparent */
+  }
+  .arr {
+    height: 1.25rem; /* h-5 */
+    width: 1.25rem; /* w-5 */
+  }
+
+  .image-container {
+    margin-top: 5rem; /* mt-20 */
+    position: relative; /* relative */
+  }
+  
+  @media (min-width: 768px) { /* md breakpoint */
+    .image-container {
+      margin-top: 0; /* md:mt-0 */
+      height: 648px; /* md:h-[648px] */
+      flex: 1; /* md:flex-1 */
+    }
+  }
+  
+  /* Styles.css or your existing CSS file */
+
+.image-cog {
+    position: relative; /* Default position */
+    /* No default height, width, or max-width */
+  }
+  
+  @media (min-width: 768px) { /* md breakpoint */
+    .image-cog {
+      position: absolute; /* md:absolute */
+      height: 100%; /* md:h-full */
+      width: auto; /* md:w-auto */
+      max-width: none; /* md:max-w-none */
+      left: -1.5rem; /* md:-left-6 */
+    }
+  }
+  
+  @media (min-width: 1024px) { /* lg breakpoint */
+    .image-cog {
+      left: 0; /* lg:left-0 */
+    }
+  }
+  
+  
+  /* Styles.css or your existing CSS file */
+
+.image-cylinder {
+    display: none; /* hidden */
+  }
+  
+  @media (min-width: 768px) { /* md breakpoint */
+    .image-cylinder {
+      display: block; /* md:block */
+      position: absolute; /* md:absolute */
+      top: -2.5rem; /* -top-10 */
+      left: -8rem; /* -left-32 */
+    }
+  }
+  
+  
+  /* Styles.css or your existing CSS file */
+
+.image-noodle {
+    display: none; /* hidden */
+  }
+  
+  @media (min-width: 1024px) { /* lg breakpoint */
+    .image-noodle {
+      display: block; /* lg:block */
+      position: absolute; /* absolute */
+      top: 524px; /* top-[524px] */
+      left: 448px; /* left-[448px] */
+      transform: rotate(30deg); /* rotate-[30deg] */
+    }
+  }
+  
+  

@@ -1,0 +1,27 @@
+/* styles.css or your existing CSS file */
+
+.logo-ticker-container {
+    padding-top: 2rem; /* equivalent to py-8 */
+    padding-bottom: 2rem; /* equivalent to py-8 */
+    background-color: white; /* equivalent to bg-white */
+  }
+  
+  .logo-ticker-wrapper {
+    display: flex;
+    overflow: hidden; /* equivalent to overflow-hidden */
+    mask-image: linear-gradient(to right, transparent, black, transparent); /* equivalent to [mask-image:linear-gradient(to_right,transparent,black,transparent)] */
+  }
+  
+  .logo-ticker-animation {
+    display: flex;
+    gap: 3.5rem; /* equivalent to gap-14 */
+    flex-shrink: 0; /* equivalent to flex-none */
+    padding-right: 3.5rem; /* equivalent to pr-14 */
+  }
+  
+  .logo-ticker-image {
+    height: 60px;  /* equivalent to h-[60px] */
+    width: auto;   /* equivalent to w-auto */
+  }
+  
+  

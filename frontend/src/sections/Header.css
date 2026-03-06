@@ -1,0 +1,148 @@
+/* Header.css */
+
+header {
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(10px);
+    z-index: 20;
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.75rem; /* py-3 */
+    background-color: black;
+    color: white;
+    font-size: 0.875rem; /* text-sm */
+    gap: 0.75rem; /* gap-3 */
+  }
+  
+  .header-welcome {
+    color: rgba(255, 255, 255, 0.6); /* text-white/60 */
+    display: none; /* hidden */
+  }
+  
+  @media (min-width: 768px) {
+    .header-welcome {
+      display: block; /* md:block */
+    }
+  }
+  
+  .header-sign-in {
+    display: inline-flex;
+    gap: 0.25rem; /* gap-1 */
+    align-items: center;
+  }
+  .arrow{
+    height: 1rem /* 16px */;
+    width: 1rem /* 16px */;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .py{
+  
+    padding-top: 1.25rem /* 20px */;
+    padding-bottom: 1.25rem /* 20px */;
+  }
+ 
+  .cont {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+@media (min-width: 375px) {
+    .cont {
+        max-width: 375px;
+    }
+}
+@media (min-width: 768px) {
+    .cont {
+        max-width: 768px;
+    }
+}
+@media (min-width: 1200px) {
+    .cont {
+        max-width: 1200px;
+        padding-right: 80px;
+        padding-left: 80px;
+    }
+}
+.divlogo{
+    display: flex;                     /* Flex container */
+  align-items: center;              /* Vertically center items */
+  justify-content: space-between;    /* Space items evenly with space between */
+
+}  
+
+  .header-logo {
+    position: relative;
+  }
+  
+  .header-logo::before {
+    content: '';
+    position: absolute;
+    top: -2px; /* -inset-[2px] */
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 0.5rem; /* rounded-lg */
+    background: linear-gradient(to right, indigo, purple, pink);
+    opacity: 0.95;
+    filter: blur(5px);
+  }
+  
+  .header-logo img {
+    position: relative;
+    border-radius: 0.5rem; /* rounded-lg */
+  }
+  
+  .menu-icon {
+    height: 1.25rem; /* h-5 */
+    width: 1.25rem; /* w-5 */
+    display: none; /* md:hidden */
+  }
+  
+  @media (max-width: 768px) {
+    .menu-icon {
+      display: block; /* md:hidden */
+    }
+  }
+  
+  .navig {
+    display: none; /* hidden */
+    gap: 1.5rem; /* gap-6 */
+    color: rgba(0, 0, 0, 0.6); /* text-black/60 */
+    align-items: center;
+  }
+  
+  @media (min-width: 768px) {
+    .navig {
+      display: flex; /* md:flex */
+    }
+  }
+  
+  .navig a {
+    color: inherit; /* inherit color */
+    text-decoration: none; /* remove underline */
+  }
+  .navig a:hover{
+    font-weight: 700;
+    color: black;
+  }
+  
+  .sign-in-button {
+    background-color: black;
+    color: white;
+    padding: 0.5rem 1rem; /* px-4 py-2 */
+    border-radius: 0.5rem; /* rounded-lg */
+    font-weight: 500; /* font-medium */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -0.015em; /* tracking-tighter */
+  }
+  

@@ -1,0 +1,501 @@
+/* General Styles */
+
+  .order-container {
+     /* Adjust based on the width of the Sidebar */
+    padding: 20px;
+    font-family: "Poppins";
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  h2 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Search Bar */
+  .search-bar {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Orders Table */
+  .orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .orders-table th,
+  .orders-table td {
+    padding: 12px 15px;
+   
+    text-align: left;
+  }
+  
+  .orders-table th {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .orders-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Status Badge */
+  .status {
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+  }
+  
+  .status.paid {
+    background-color: #28a745;
+  }
+  
+  .status.unpaid {
+    background-color: #dc3545;
+  }
+  
+  /* Action Buttons */
+  button {
+    padding: 8px 12px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .edit-button {
+    background-color: #007bff;
+    color: #fff;
+    
+  }
+  
+  .edit-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .delete-button {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  .delete-button:hover {
+    background-color: #c82333;
+  }
+  
+  .print-button {
+    background-color: #17a2b8;
+    color: #fff;
+  }
+  
+  .print-button:hover {
+    background-color: #138496;
+  }
+  
+  .pay-button {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  .pay-button:hover {
+    background-color: #218838;
+  }
+  
+  /* Edit Order Modal */
+  
+
+  .edit-order-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 8px;
+  }
+  .edit-order-modal h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .edit-order-modal label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .edit-order-modal input[type="text"],
+  .edit-order-modal input[type="number"],
+  .edit-order-modal select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .edit-order-modal .products-table {
+    margin-bottom: 20px;
+  }
+  
+  .edit-order-modal .products-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .edit-order-modal .products-table th,
+  .edit-order-modal .products-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    color: black;
+    text-align: left;
+  }
+  
+  .edit-order-modal .products-table th {
+    background-color: #f4f4f4;
+  }
+  
+  .edit-order-modal .products-table td:last-child {
+    text-align: center;
+  }
+  
+  .edit-order-modal .modal-actions {
+    text-align: right;
+  }
+  
+  .edit-order-modal .modal-actions button {
+    padding: 10px 15px;
+    margin-left: 10px;
+  }
+  
+  .edit-order-modal .modal-actions button:first-child {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  .edit-order-modal .modal-actions button:first-child:hover {
+    background-color: #218838;
+  }
+  
+  .edit-order-modal .modal-actions button:last-child {
+    background-color: #6c757d;
+    color: #fff;
+  }
+  
+  .edit-order-modal .modal-actions button:last-child:hover {
+    background-color: #5a6268;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .orders-table, 
+    .edit-order-modal {
+      width: 100%;
+      font-size: 14px;
+    }
+  
+    .orders-table th, 
+    .orders-table td, 
+    .edit-order-modal .products-table th, 
+    .edit-order-modal .products-table td {
+      padding: 10px;
+    }
+  
+    .modal-actions {
+      text-align: center;
+    }
+  
+    .modal-actions button {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+  .add-pro{
+    background-color: #007bff;
+    color: white;
+  }
+  .add-print{
+    background-color: #007bff;
+    color: white;
+  }
+  .add-pay{
+    background-color:rgb(22, 189, 22);
+    color: white;
+  }
+  .add-save{
+    background-color: #007bff;
+    margin-left: 220px;
+    color: white;
+  }
+  .add-cancel{
+    background-color: red;
+    color: white;
+  }
+  @keyframes fadeInModal {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+
+
+
+
+
+
+  .page-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+  }
+  
+  .content-wrapper {
+    flex: 1;
+    padding: 2rem;
+  }
+  
+  .main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .page-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    margin-bottom: 2rem;
+  }
+  
+  .error-message {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: #fee2e2;
+    border: 1px solid #ef4444;
+    color: #dc2626;
+    border-radius: 0.375rem;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  @media (min-width: 768px) {
+    .grid-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .panel {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .panel-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4b5563;
+  }
+  
+  .form-input {
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    width: 100%;
+    transition: border-color 0.2s;
+  }
+  
+  .form-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+  }
+  
+  .submit-button {
+    background-color: #22c55e;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .submit-button:hover:not(:disabled) {
+    background-color: #16a34a;
+  }
+  
+  .submit-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .summary-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    color: #4b5563;
+  }
+  
+  .summary-total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+    margin-top: 0.5rem;
+  }
+  
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .product-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    transition: transform 0.2s;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .product-name {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .product-price {
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+  }
+  
+  .add-to-cart-button {
+    background-color: #3b82f6;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .add-to-cart-button:hover {
+    background-color: #2563eb;
+  }
+  
+  .cart-items-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .item-name {
+    font-weight: 500;
+  }
+  
+  .item-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .quantity-input {
+    width: 5rem;
+    padding: 0.25rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+  }
+  
+  .item-total {
+    min-width: 80px;
+    text-align: right;
+  }
+  
+  .remove-button {
+    color: #ef4444;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  
+  .remove-button:hover {
+    color: #dc2626;
+  }

@@ -1,0 +1,195 @@
+/* AddOrder.css */
+
+.add-order-container {
+    padding: 20px;
+   
+    margin: 0 auto;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    font-family: "Poppins";
+    margin-top: 90px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in;
+  }
+  
+  h2 {
+    color: #2744fd;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  .button-add-product {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #28a745; /* Green for "Add" button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+   
+}
+
+.button-add-product:hover {
+    background-color: #218838; /* Darker shade of green on hover */
+}
+
+.button-add-product:active {
+    background-color: #1e7e34; /* Even darker on click */
+}
+
+.button-add-product:focus {
+    outline: none; /* Remove outline on focus */
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); /* Light green shadow */
+}
+.total-price {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333; /* Dark gray for readability */
+  text-align: right; /* Align to the right */
+  padding: 10px 20px;
+  margin-top: 20px;
+  border-top: 2px solid #ddd;
+}
+
+.total-price .amount {
+  color: #28a745; /* Green to indicate a positive total */
+  font-size: 28px;
+}
+
+
+  .add-order-form .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .add-order-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .add-order-form input[type="text"],
+  .add-order-form input[type="number"],
+  .add-order-form select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .products-table {
+    margin-top: 20px;
+  }
+  
+  .products-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .products-table th,
+  .products-table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+  
+  .products-table th {
+    background-color: #2771fc;
+  }
+  
+  .products-table td input[type="text"],
+  .products-table td input[type="number"],
+  .products-table td select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .add-product-button {
+    display: inline-block;
+    margin-top: 15px;
+
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .add-product-button:hover {
+    background-color: #218838;
+  }
+  
+  .remove-product-button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .remove-product-button:hover {
+    background-color: #c82333;
+  }
+  
+  .total-amount-section {
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .total-amount-section h3 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .print-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .print-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .submit-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  
+  .submit-button:hover {
+    background-color: #218838;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

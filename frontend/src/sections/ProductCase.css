@@ -1,0 +1,141 @@
+/* styles.css or your existing CSS file */
+
+/* styles.css or your existing CSS file */
+
+.product-showcase-section {
+    background: linear-gradient(to bottom, #FFFFFF, #D2DCFF); /* equivalent to bg-gradient-to-b from-[#FFFFFF] to-[#D2DCFF] */
+    padding-top: 4rem;  /* equivalent to py-16 */
+    padding-bottom: 4rem; /* equivalent to py-16 */
+    overflow-x: clip; /* equivalent to overflow-x-clip */
+  }
+  
+  
+  .container-product {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+@media (min-width: 375px) {
+    .container-product {
+        max-width: 375px;
+    }
+}
+@media (min-width: 768px) {
+    .container-product {
+        max-width: 768px;
+    }
+}
+@media (min-width: 1200px) {
+    .container-product {
+        max-width: 1200px;
+        padding-right: 80px;
+        padding-left: 80px;
+    }
+}
+.max-width-container {
+    max-width: 740px;  /* equivalent to max-w-[740px] */
+    margin-left: auto;  /* equivalent to mx-auto */
+    margin-right: auto; /* equivalent to mx-auto */
+  }  
+  .flx-cnt{
+    display: flex;              /* equivalent to flex */
+    justify-content: center; 
+  }
+  .tag {
+    font-size: 0.875rem;                      /* equivalent to text-sm */
+    display: inline-flex;                     /* equivalent to inline-flex */
+    border: 1px solid rgba(34, 34, 34, 0.1);  /* equivalent to border border-[#222]/10 */
+    padding-left: 0.75rem;                   /* equivalent to px-3 */
+    padding-right: 0.75rem;                  /* equivalent to px-3 */
+    padding-top: 0.25rem;                    /* equivalent to py-1 */
+    padding-bottom: 0.25rem;                 /* equivalent to py-1 */
+    border-radius: 0.375rem;                 /* equivalent to rounded-lg */
+    letter-spacing: -0.015em;                /* equivalent to tracking-tight */
+  }
+
+  /* styles.css or your existing CSS file */
+
+.heading {
+    text-align: center;                       /* equivalent to text-center */
+    font-size: 3rem;                         /* equivalent to text-5xl */
+    line-height: 1.15;                       /* approximates md:leading-[60px] (60px / 54px) */
+    font-weight: 700;                        /* equivalent to font-bold */
+    letter-spacing: -0.015em;                /* equivalent to tracking-tighter */
+    background: linear-gradient(to bottom, black, #001E80); /* equivalent to bg-gradient-to-b from-black to-[#001E80] */
+    -webkit-background-clip: text;           /* ensures the background gradient clips to the text */
+    background-clip: text;                   /* ensures the background gradient clips to the text */
+    color: transparent;                       /* equivalent to text-transparent */
+    margin-top: 1.5rem;                      /* equivalent to mt-6 */
+  }
+  
+  /* Media query for responsive font size on medium screens */
+  @media (min-width: 768px) { /* md breakpoint */
+    .heading {
+      font-size: 3.375rem;                     /* equivalent to md:text-[54px] */
+      line-height: 1.15;                       /* use the same line-height */
+    }
+  }
+  
+  
+  .description {
+    font-size: 1.1rem;
+    font-family: 'Poppins';
+    text-align: center;
+    line-height: 1.75rem ; /* text-xl */
+    color: #010D3E; /* text-[#010D3E] */
+    letter-spacing: -0.015em; /* tracking-tighter */
+    margin-top: 1.5rem; /* mt-6 */
+  }
+  
+  /* styles.css or your existing CSS file */
+
+.product-ig {
+    width: 1040px;
+    height: 660px;
+    margin-top: 2.5rem;         /* equivalent to mt-10 */
+    border-radius: 1rem;        /* equivalent to rounded-2xl */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 4px 30px rgba(0, 0, 0, 0.1); /* equivalent to shadow-2xl */
+  }
+  
+  .product-i {
+    width: 1040px;
+    height: 660px;
+    margin-top: 2.5rem;         /* equivalent to mt-10 */
+   
+  }
+  
+ /* styles.css or your existing CSS file */
+
+.pyramid-image {
+    display: none;                  /* equivalent to hidden */
+    position: absolute;            /* equivalent to absolute */
+    right: -9rem;                  /* equivalent to -right-36 (rem values) */
+    top: -8rem;                    /* equivalent to -top-32 (rem values) */
+  }
+  
+  /* Media query for responsive visibility */
+  @media (min-width: 768px) { /* md breakpoint */
+    .pyramid-image {
+      display: block;              /* equivalent to md:block */
+    }
+  }
+  
+  
+  /* styles.css or your existing CSS file */
+
+.tube-image {
+    display: none;                  /* equivalent to hidden */
+    position: absolute;            /* equivalent to absolute */
+    left: -9rem;                   /* equivalent to -left-36 (rem values) */
+    bottom: 6rem;                  /* equivalent to bottom-24 (rem values) */
+  }
+  
+  /* Media query for responsive visibility */
+  @media (min-width: 768px) { /* md breakpoint */
+    .tube-image {
+      display: block;              /* equivalent to md:block */
+    }
+  }
+  

@@ -1,0 +1,648 @@
+/* Geolocation Form Container */
+/* Responsive Design Overhaul */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+.mobile-form-toggle {
+    display: none; /* Hidden by default */
+    cursor: pointer;
+    z-index: 1000;
+    position: fixed;
+    top: 45px;
+    right: 10px;
+    background-color: #f0f0f0;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  
+@media (max-width: 1200px) {
+    .mobile-form-toggle {
+      display: flex;
+    }
+  
+    .geolocation-form-container {
+      transition: all 0.3s ease;
+    }
+  
+    .geolocation-form-container:not(.mobile-form-open) {
+      left: -100%;
+      opacity: 0;
+      visibility: hidden;
+    }
+  
+    .geolocation-form-container.mobile-form-open {
+      left: 11px;
+    
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .mobile-form-toggle {
+      display: none;
+    }
+  }
+@media screen and (max-width: 1200px) {
+    .tracking-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .geolocation-form-container {
+        position: relative;
+        left: 0;
+        top: 0;
+       
+        max-width: 600px;
+        margin: 0 auto;
+        z-index: 10;
+    }
+
+    .map-container {
+        width: 100%;
+        height: 50vh;
+        order: -1;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .geolocation-form-container {
+        padding: 15px;
+        
+        margin: 10px auto;
+    }
+
+    .route-form-title {
+        font-size: 20px;
+    }
+
+    .location-input {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .route-submit-btn,
+    .use-location-btn,
+    .save-route-btn,
+    .view-routes-btn {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .modal-popup-container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .saved-routes-table {
+        font-size: 12px;
+    }
+
+    .saved-routes-table th,
+    .saved-routes-table td {
+        padding: 6px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .geolocation-form-container {
+        width: 95%;
+        max-width: 95%;
+        left: 2.5%;
+        transform: none;
+        padding: 10px;
+        top: 60px;
+    }
+
+    .input-group label {
+        font-size: 13px;
+    }
+
+    .route-form-title {
+        font-size: 18px;
+    }
+
+    .saved-routes-table {
+        font-size: 10px;
+    }
+
+    .modal-popup-container {
+        overflow-x: auto;
+    }
+
+    .saved-routes-table {
+        min-width: 300px;
+    }
+}
+
+/* Flexbox for better responsiveness */
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.notification-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1100;
+    width: 300px;
+    max-width: 90%;
+}
+
+.notification {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+}
+
+/* Ensure text overflow is handled gracefully */
+.location-input,
+.suggestion-item,
+.saved-routes-data {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Responsive text sizing */
+html {
+    font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+/* Touch-friendly sizing */
+@media (pointer: coarse) {
+    .route-submit-btn,
+    .use-location-btn,
+    .save-route-btn,
+    .view-routes-btn {
+        min-height: 48px;
+        padding: 15px;
+    }
+
+    .suggestion-item {
+        padding: 15px;
+    }
+}
+
+.geolocation-form-container {
+    position: absolute;
+    left: 60px;
+    z-index: 1000;
+    background: linear-gradient(135deg, #ffffff, #f9fafb);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    
+    padding: 25px;
+    top:130px;
+    width: 450px;
+    font-family: "Poppins", sans-serif;
+    animation: slideIn 0.5s ease-in-out;
+}
+
+/* Animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Form Title */
+.route-form-title {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    text-align: center;
+    background: -webkit-linear-gradient(#2c3e50, #4a90e2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Input Labels */
+.input-group label {
+    font-size: 15px;
+    font-weight: 500;
+    color: #7f8c8d;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Input Fields */
+.location-input {
+    
+    padding: 14px;
+  
+
+    margin-bottom: 18px;
+    border-radius: 8px;
+    border: 2px solid #ecf0f1;
+    background-color: #f4f5f7;
+    font-size: 15px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.location-input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.4);
+    outline: none;
+}
+
+/* Suggestions List */
+.suggestions-list {
+    list-style: none;
+    padding: 8px;
+    margin: 8px 0;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.suggestion-item {
+    padding: 12px;
+    font-size: 14px;
+    color: #34495e;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.suggestion-item:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.03);
+    
+}
+
+/* Buttons */
+.route-submit-btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+    border: none;
+}
+
+.route-submit-btn:disabled {
+    background: linear-gradient(135deg, #bdc3c7, #95a5a6);
+    cursor: not-allowed;
+}
+
+.route-submit-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #4aa3e0, #3498db);
+    box-shadow: 0 6px 15px rgba(52, 152, 219, 0.3);
+}
+
+/* Map Container */
+.map-container {
+    width: 100%;
+    height: 100vh;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom Marker */
+.custom-marker {
+    background: radial-gradient(circle, #ff5733 0%, #c0392b 70%);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border: 2px solid #ffffff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .geolocation-form-container {
+       
+        padding: 20px;
+    }
+
+    .route-form-title {
+        font-size: 22px;
+    }
+
+    .route-submit-btn {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .map-container {
+        height: 80vh;
+    }
+}
+.use-location-btn {
+    margin-top: 10px;
+    background-color: #28a745; /* Green color */
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+    border: none;
+  }
+  
+  .use-location-btn:hover {
+    background-color: #218838;
+  }
+  .start-tracking-btn {
+    margin: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .saved-routes-container {
+    margin-top: 20px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .saved-routes-container h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .routes-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .routes-table th, .routes-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+
+  }
+  
+  
+  .overlay-modal-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-popup-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 10px;
+    width: 100%;
+    max-width: 1500px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .saved-routes-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .saved-routes-header,
+  .saved-routes-data {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+ 
+  .table-action-btn {
+    margin-top: 20px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .table-action-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Custom marker style */
+.custom-marker {
+    width: 30px;
+    height: 45px;
+    background-color: #3498db; /* Example: Blue color for custom marker */
+    border-radius: 50%; /* Circular shape */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transform: none; /* Ensure no transform is applied */
+  }
+  
+  .custom-marker::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    border-radius: 50%;
+    bottom: 5px; /* Position the dot at the bottom of the marker */
+  }
+  /* Modern and Responsive Leaflet Routing Container Styles */
+  .leaflet-routing-container {
+    box-sizing: border-box;
+    background-color: #ffffff;
+
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    color: #333;
+
+    position: fixed;
+    z-index: 1000;
+    padding: 15px;
+    max-width:500px;
+    width: 100%;
+    
+    top: 120px;
+    right: 20px;
+
+    /* Set a specific height and enable scrolling */
+    max-height: 400px; /* Adjust as needed */
+    overflow-y: auto;
+
+    /* Ensure visibility on all screen sizes */
+    display: block;
+    opacity: 1;
+    visibility: visible;
+
+    /* Responsive design */
+    @media screen and (max-width: 768px) {
+        max-width: 90%;
+        left: 5%;
+        right: 5%;
+        transform: translateX(0);
+        margin: 10px auto;
+    }
+
+    transition: all 0.3s ease-in-out;
+}
+
+/* Custom scrollbar styling */
+.leaflet-routing-container::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+.leaflet-routing-container::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Background of the scrollbar track */
+    border-radius: 8px;
+}
+
+.leaflet-routing-container::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color of the scrollbar thumb */
+    border-radius: 8px; /* Rounded corners for the thumb */
+    border: 2px solid #f0f0f0; /* Adds spacing around the thumb */
+}
+
+.leaflet-routing-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Darker color when hovering over the scrollbar thumb */
+}
+
+
+/* Toggle button for routing container */
+.leaflet-routing-toggle-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.leaflet-routing-toggle-btn:hover {
+    background-color: #357abd;
+}
+
+/* Hidden state */
+.leaflet-routing-container.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(100%);
+}
+
+/* Existing styles remain the same */
+.leaflet-routing-container.leaflet-bar {
+    border: none;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.leaflet-routing-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.leaflet-routing-container input:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.leaflet-routing-container .leaflet-routing-add-waypoint,
+.leaflet-routing-container .leaflet-routing-remove-waypoint {
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.leaflet-routing-container .leaflet-routing-add-waypoint:hover,
+.leaflet-routing-container .leaflet-routing-remove-waypoint:hover {
+    background-color: #e0e0e0;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 480px) {
+    .leaflet-routing-container,
+    .leaflet-routing-toggle-btn {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .leaflet-routing-container input {
+        font-size: 12px;
+        padding: 8px;
+    }
+}
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .leaflet-routing-container {
+        display: none; /* Hide the container on mobile screens */
+    }
+
+    .leaflet-routing-toggle-btn {
+        display: none; /* Optionally hide the toggle button too */
+    }
+}

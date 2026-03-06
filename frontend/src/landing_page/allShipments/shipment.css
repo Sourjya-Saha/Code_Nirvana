@@ -1,0 +1,391 @@
+ Root Variables
+:root {
+    --primary-gradient: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+    --secondary-gradient: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
+    --primary-color: #6366f1;
+    --secondary-color: #ec4899;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --rounded-sm: 0.5rem;
+    --rounded-md: 0.75rem;
+    --rounded-lg: 1rem;
+  }
+  
+  /* Shipment Container */
+  .shipment-container {
+    margin: 20px;
+    padding: 2rem;
+    background-color: var(--bg-secondary);
+    
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  /* Shipment Title */
+  .shipment-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 20px 0;
+    color: black;
+
+
+    padding-bottom: 10px;
+    width: fit-content;
+    margin-inline: auto;
+    letter-spacing: 0.025em;
+    border-bottom: 2px solid var(--secondary-color);
+  }
+  
+  /* Navigation */
+  .shipment-nav {
+    display: flex;
+    gap: 1rem;
+    background: var(--bg-primary);
+    padding: 0.75rem;
+    border-radius: var(--rounded-lg);
+    box-shadow: var(--shadow-md);
+    margin-bottom: 2rem;
+    position: sticky;
+    top: 1rem;
+    z-index: 10;
+    animation: fadeInUp 0.6s ease-out;
+  }
+  
+  .nav-btn {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: var(--rounded-md);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  
+  .nav-btn:hover {
+    color: var(--primary-color);
+    transform: translateY(-1px);
+    background-color: var(--bg-secondary);
+  }
+  
+  .nav-btn.active {
+    background: var(--primary-gradient);
+    color: white;
+    box-shadow: var(--shadow-md);
+  }
+  
+  /* Search Bar */
+  .search-bar {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border: 2px solid #e2e8f0;
+    border-radius: var(--rounded-md);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .search-bar:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    outline: none;
+  }
+  
+  /* Transactions Table */
+  .transactions-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 2rem;
+    background: var(--bg-primary);
+    border-radius: var(--rounded-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .transactions-table th,
+  .transactions-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  .transactions-table th {
+    background: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+  }
+  
+  .transactions-table tr:hover {
+    background-color: var(--bg-secondary);
+  }
+  
+  /* Status Labels */
+  .status {
+    padding: 0.5rem 1rem;
+    border-radius: var(--rounded-sm);
+    font-weight: 500;
+    font-size: 0.875rem;
+    text-transform: capitalize;
+  }
+  
+  .status.pending {
+    background-color: #fff7ed;
+    color: var(--warning-color);
+  }
+  
+  .status.completed {
+    background-color: #f0fdf4;
+    color: var(--success-color);
+  }
+  
+  .status.cancelled {
+    background-color: #fef2f2;
+    color: var(--danger-color);
+  }
+  
+  /* Action Buttons */
+  .action-btn {
+    padding: 0.5rem;
+    border: none;
+    border-radius: var(--rounded-sm);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .view-btn {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .cart-btn {
+    background-color: var(--success-color);
+    color: white;
+  }
+  
+  .action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  /* Modal Styles */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .transaction-details-modal {
+    background: var(--bg-primary);
+    border-radius: var(--rounded-lg);
+    padding: 2rem;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-lg);
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  .modal-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--secondary-color);
+  }
+  
+  .modal-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .modal-info-grid > div {
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border-radius: var(--rounded-md);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .modal-products {
+    margin-top: 2rem;
+  }
+  
+  .modal-product {
+    background: var(--bg-secondary);
+    padding: 1.25rem;
+    border-radius: var(--rounded-md);
+    margin-bottom: 1rem;
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .modal-product h4 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+  
+  .modal-product span {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: white;
+    border-radius: var(--rounded-sm);
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .modal-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .print-btn,
+  .close-btn {
+    flex: 1;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--rounded-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .print-btn {
+    background: var(--primary-gradient);
+    color: white;
+  }
+  
+  .close-btn {
+    background: var(--danger-color);
+    color: white;
+  }
+  
+  .print-btn:hover,
+  .close-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .shipment-container {
+      padding: 1rem;
+    }
+  
+    .shipment-nav {
+      flex-direction: column;
+    }
+  
+    .modal-info-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .modal-actions {
+      flex-direction: column;
+    }
+  
+    .transactions-table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  
+    .modal-product span {
+      display: block;
+      margin-right: 0;
+    }
+  }
+  
+  /* Scrollbar Styling */
+  .transaction-details-modal::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .transaction-details-modal::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 4px;
+  }
+  
+  .transaction-details-modal::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+  }
+  
+  .transaction-details-modal::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+  }

@@ -1,0 +1,86 @@
+.call-to-action-section {
+    background: linear-gradient(to bottom, #ffffff, #d2dcff);
+    padding-top: 96px;
+    padding-bottom: 96px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .section-heading {
+    position: relative;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+  
+  .heading {
+    text-align: center;
+    
+    line-height: 1.2;
+    font-weight: bold;
+    margin-top: 20px;
+    background: linear-gradient(to bottom, #000000, #001e80);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  
+  .description {
+    text-align: center;
+    font-size: 19px;
+    line-height: 30px;
+    color: #010d3e;
+    margin-top: 20px;
+  }
+  
+  .star-image {
+    position: absolute;
+    left: -350px;
+    top: -137px;
+  }
+  
+  .spring-image {
+    position: absolute;
+    right: -331px;
+    top: -19px;
+  }
+  
+  .button-container {
+    display: flex;
+    gap: 8px;
+    margin-top: 40px;
+    justify-content: center;
+  }
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: medium;
+    cursor: pointer;
+  }
+  
+  .btn-primary {
+    background-color: #000000;
+    color: #ffffff;
+  }
+  
+  .btn-text {
+    background-color: transparent;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .arrow-icon {
+    width: 20px;
+    height: 20px;
+  }
+  

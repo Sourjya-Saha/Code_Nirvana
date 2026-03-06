@@ -1,0 +1,493 @@
+.dashboard-container {
+    padding: 20px;
+    background-color: #f4f7fc;
+    min-height: 100vh;
+    font-family: "Poppins";
+    font-weight: 500;
+  }
+  
+  .dashboard-container h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-weight: 600;
+  }
+  
+  .dashboard-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    
+  }
+  
+  .metric-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    text-align: center;
+    height: 190px;
+  }
+  
+  .metric-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .metric-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .metric-icon {
+    background-color: #eef5ff;
+    color: #4169E1; /* Customize icon color */
+    font-size: 2.5rem;
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .metric-header h2 {
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .metric-card p {
+    font-size: 1rem;
+    color: #555;
+    font-weight: 500;
+    margin-top: 10px;
+  }
+
+  
+  @media (max-width: 768px) {
+    .dashboard-metrics {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+  
+    .metric-card {
+      padding: 16px;
+    }
+  
+    .metric-icon {
+      font-size: 32px;
+    }
+  
+    .metric-card h2 {
+      font-size: 24px;
+    }
+  }
+  
+  .connect-button {
+    background-color: #6366F1; /* Primary color */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Padding for the button */
+    font-size: 16px; /* Font size */
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: .5px; 
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+  }
+  
+  .connect-button:hover {
+    background-color: #4F46E5; /* Darker shade on hover */
+    transform: translateY(-2px); /* Slight upward movement on hover */
+  }
+  
+  .connect-button:active {
+    background-color: #4338CA; /* Even darker shade on click */
+    transform: translateY(1px); /* Slight downward movement on click */
+  }
+  
+  .connect-button:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.4); /* Custom focus shadow */
+  }
+  
+  .dashboard-metric {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    padding: 20px;
+   
+    margin-right: 15px;
+    gap: 20px;
+    margin-bottom: 20px;
+    background-color: #f4f7fc;
+    border-radius: 15px;
+  }
+  
+  .metric-card h2 {
+    font-size: 2.2rem;
+    color: #007bff;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  
+  .metric-card p {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    color: #555;
+  }
+  
+  .dashboard-charts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  
+  .chart-card {
+    background-color: #fff;
+    padding: 20px;
+
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+  }
+  
+  .chart-card h3 {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  @media (max-width: 768px) {
+    .dashboard-charts {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .chart-card {
+      width: 100%;
+      max-width: 600px;
+    }
+  }
+  
+  .toggle-graph-button{
+    background-color: #4F46E5;
+    padding: 6px 12px;
+    
+    font-size: 20px;
+    border-radius: 4px;
+    color: white;
+
+  }
+  .alerts {
+    border-radius: 5px;
+    font-size: 16px;
+   
+    color: #333;
+  }
+  
+  .alerts .alert {
+    margin-bottom: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .alert.low-stock {
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #856404;
+  }
+  
+  .alert.out-of-stock {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+  }
+  
+  .alertbox{
+    width: 100%;
+  }
+
+  .revenue-card {
+    width: 100%;
+    max-width: 500px;
+    height: 190px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+  }
+  
+  .card-content {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+  
+  .revenue-details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .revenue-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: #555;
+  }
+  
+  .revenue-amount {
+    display: flex;
+    align-items: baseline;
+    margin-top: 8px;
+  }
+  
+  .amount-text {
+    font-size: 22px;
+    font-weight: 700;
+    color: #007bff;
+  }
+  
+  .percentage-change {
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .percentage-text {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+  }
+  
+  .text-green {
+    color: #10b981;
+  }
+  
+  .text-red {
+    color: #f87171;
+  }
+  
+  .chart-contain {
+    position: relative;
+    width: 100%;
+    height: 80px; /* Adjust the height as needed */
+    background-color: #fff; /* Light background for the chart area */
+    border-radius: 8px; /* Smooth corners */
+    padding: 10px; /* Optional: Adds padding around the chart */
+    
+  
+  }
+  
+  .chart-contain canvas {
+    display: block; /* Ensures the canvas behaves as a block-level element */
+    width: 100% !important; /* Make sure the canvas fills the width */
+    height: 100% !important; /* Ensure the canvas fills the height */
+  }
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 12px;
+    padding: 20px;
+    background-color: #f4f7fc;
+    min-height: 100vh;
+    font-family: "Poppins";
+    font-weight: 500;
+  }
+  
+  .dashboard-grid h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+    grid-column: 1 / -1;
+  }
+  
+  /* Metric cards - div1 through div13 */
+  .metric-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .metric-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .metric-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .metric-icon {
+    background-color: #eef5ff;
+    color: #4169E1;
+    font-size: 2.5rem;
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .metric-header h2 {
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .metric-card p {
+    font-size: 1rem;
+    color: #555;
+    font-weight: 500;
+    margin-top: 10px;
+  }
+  
+  /* Special sections that span multiple grid cells */
+  .notifications {
+    grid-column: span 4 / span 4;
+    grid-row: span 2 / span 2;
+    grid-column-start: 3;
+    grid-row-start: 4;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .sales-chart {
+    grid-column: span 4 / span 4;
+    grid-row: span 2 / span 2;
+    grid-column-start: 3;
+    grid-row-start: 6;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .transaction-metrics {
+    grid-column: span 2 / span 2;
+    grid-row: span 3 / span 3;
+    grid-row-start: 4;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .category-sales {
+    grid-column: span 2 / span 2;
+    grid-row: span 4 / span 4;
+    grid-row-start: 7;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .top-products {
+    grid-column: span 2 / span 2;
+    grid-row: span 3 / span 3;
+    grid-column-start: 3;
+    grid-row-start: 8;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .alert-box {
+    grid-column: span 2 / span 2;
+    grid-row: span 3 / span 3;
+    grid-column-start: 5;
+    grid-row-start: 8;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1200px) {
+    .dashboard-grid {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto;
+    }
+    
+    .notifications, .sales-chart {
+      grid-column: span 4;
+      grid-column-start: auto;
+    }
+    
+    .transaction-metrics, .category-sales, .top-products, .alert-box {
+      grid-column: span 2;
+      grid-column-start: auto;
+      grid-row: auto;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .dashboard-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .notifications, .sales-chart, .transaction-metrics, 
+    .category-sales, .top-products, .alert-box {
+      grid-column: 1;
+      grid-row: auto;
+    }
+  }
+  
+  .chart-title {
+    font-size: 1.7rem;
+    color: rgb(51, 51, 51);
+    font-weight: bold;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    border-left: 4px solid #36A2EB;
+    padding-left: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .chart-subtitle {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+
+
+
+

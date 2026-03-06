@@ -1,0 +1,360 @@
+/* Modern Transaction Management Styles */
+:root {
+    --primary-gradient: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+    --secondary-gradient: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
+    --primary-color: #6366f1;
+    --secondary-color: #ec4899;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --rounded-sm: 0.5rem;
+    --rounded-md: 0.75rem;
+    --rounded-lg: 1rem;
+  }
+  
+  .shipment-management-container {
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--bg-secondary);
+    min-height: 100vh;
+  }
+  
+  /* Header Styles */
+  .shipment-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeInDown 0.6s ease-out;
+  }
+  
+  .shipment-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.025em;
+  }
+  
+  .shipment-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  
+  /* Navigation Tabs */
+  .shipment-nav {
+    display: flex;
+    gap: 1rem;
+    background: var(--bg-primary);
+    padding: 0.75rem;
+    border-radius: var(--rounded-lg);
+    box-shadow: var(--shadow-md);
+    margin-bottom: 2rem;
+    position: sticky;
+    top: 1rem;
+    z-index: 10;
+    animation: fadeInUp 0.6s ease-out;
+  }
+  
+  .shipment-nav-btn {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: var(--rounded-md);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  .shipment-nav-btn:hover {
+    background-color: whitesmoke;
+    
+  }
+  .shipment-nav-btn:hover {
+    color: var(--primary-color);
+    transform: translateY(-1px);
+  }
+  
+  .shipment-nav-btn.active {
+    background: var(--primary-gradient);
+    color: white;
+    box-shadow: var(--shadow-md);
+  }
+  
+  .shipment-nav-btn i {
+    font-size: 1.2rem;
+  }
+  
+  /* Form Styles */
+  .create-shipment-section {
+    background: var(--bg-primary);
+    border-radius: var(--rounded-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  .shipment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-group label {
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+  
+  .form-select,
+  .form-input {
+    padding: 0.75rem;
+    border: 2px solid #e2e8f0;
+    border-radius: var(--rounded-md);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .form-select:focus,
+  .form-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    outline: none;
+  }
+  
+  .form-input.readonly {
+    background-color: var(--bg-secondary);
+    cursor: not-allowed;
+  }
+  
+  /* Product Card Styles */
+  .products-section {
+    margin-top: 2rem;
+  }
+  
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .product-card {
+    background: var(--bg-secondary);
+    border-radius: var(--rounded-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .product-header {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .product-select {
+    flex: 1;
+    padding: 0.75rem;
+    border: 2px solid #e2e8f0;
+    border-radius: var(--rounded-md);
+    font-size: 1rem;
+  }
+  
+  .delete-btn {
+    padding: 0.75rem;
+    background: var(--danger-color);
+    color: white;
+    border: none;
+    border-radius: var(--rounded-md);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .delete-btn:hover {
+    background: #dc2626;
+    transform: translateY(-2px);
+  }
+  
+  .product-details {
+    display: grid;
+    gap: 1rem;
+  }
+  
+  .detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: var(--bg-primary);
+    border-radius: var(--rounded-md);
+  }
+  
+  .detail-label {
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+  
+  .detail-value {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  
+  .quantity-input {
+    width: 80px;
+    padding: 0.5rem;
+    border: 2px solid #e2e8f0;
+    border-radius: var(--rounded-md);
+    text-align: center;
+  }
+  
+  /* Action Buttons */
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .submit-btn,
+  .print-btn,
+  .add-product-btn {
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: var(--rounded-md);
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .submit-btn {
+    background: var(--primary-gradient);
+    color: white;
+    flex: 1;
+  }
+  
+  .print-btn {
+    background: white;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+  }
+  
+  .add-product-btn {
+    background: var(--success-color);
+    color: white;
+    width: 100%;
+  }
+  
+  .submit-btn:hover,
+  .print-btn:hover,
+  .add-product-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  /* Order Summary */
+  .order-summary {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: var(--bg-secondary);
+    border-radius: var(--rounded-lg);
+    text-align: right;
+  }
+  
+  .total-amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--success-color);
+  }
+  
+  /* Error Message */
+  .error-message {
+    padding: 1rem;
+    background: #fee2e2;
+    color: var(--danger-color);
+    border-radius: var(--rounded-md);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .shipment-management-container {
+      padding: 1rem;
+    }
+  
+    .shipment-title {
+      font-size: 2rem;
+    }
+  
+    .shipment-nav {
+      flex-direction: column;
+    }
+  
+    .form-actions {
+      flex-direction: column;
+    }
+  
+    .products-grid {
+      grid-template-columns: 1fr;
+    }
+  }

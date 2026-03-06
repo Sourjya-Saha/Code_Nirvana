@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.dash-board{
+  margin-left: 80px;
+  margin-top: 60px;
+  font-family: 'Poppins';
+}
+.heading{
+    font-family: "Poppins";
+    
+}
+.info-section{
+    font-family: "Poppins";
+    color: grey;
+    font-size: 17px;
+    margin-top: 5px;
+    margin-top: 10px;
+}
+.stats-info{
+    display: flex;
+    justify-content: space-between;
+}
+.box-stats{
+    height: 140px;
+    padding-top: 10px;
+    width: 236px;
+    background-color: rgb(196, 136, 253);
+     color: white;
+    text-align: center;
+    font-family: "Poppins";
+    font-weight:600 ;
+    font-size:25px ;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgb(79, 0, 164);
+
+
+}
+
+.icon{
+    color: rgb(124, 1, 239);
+    font-size: 40px;
+  
+}
+.Stats-details{
+    justify-content: space-evenly;
+    align-items: center;
+display: flex;
+}
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: 100px;
+    aspect-ratio: 1;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    display: grid;
+    background: #fff;
+    filter: blur(3px) contrast(7) hue-rotate(290deg);
+    mix-blend-mode: darken;
+  }
+  .loader:before{
+    content: "";
+    margin: auto;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: #ff0000;
+    background: currentColor;
+    box-shadow: -30px 0,30px 0,0 30px, 0 -30px;
+    animation: l6 1s infinite alternate;
+  }
+  @keyframes l6{
+    90%,100% {box-shadow: -10px 0,10px 0,0 10px, 0 -10px;transform: rotate(180deg)}
+  }
+  .load {
+    display: flex;
+   
+    justify-content: center;
+    margin-top: 400px;
+  }
+  .loadd {
+    display: flex;
+   
+    justify-content: center;
+
+  }
+  .lding{
+    margin-top: 5px;
+    color: rgb(29, 116, 247);
+    font-family: 'Poppins';
+    font-size: 22px;
+    margin-left: 10px;
+    text-align: center;
+  }
+  .bar-chart-container {
+    background-color: #f8f9fa; /* Light background for contrast */
+    width: 1009px;
+  
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Spacing around the content */
+    margin: 20px 0; /* Space above and below the chart */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+ 
+  
+  
+  .sales-graph-container {
+    width: 100%;
+    max-width: 1200px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-left: 44px;
+    padding-right: 44px;
+
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sales-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+  
+  .title-section h2 {
+    font-size: 1.7rem;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 0px;
+  }
+  
+  .title-section p {
+    font-size: 16px;
+    color: #666;
+    margin: 4px 0 0 0;
+  }
+  
+  .controls-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .total-sales {
+    text-align: right;
+  }
+  
+  .total-sales .amount {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1a1a1a;
+  }
+  
+  .total-sales .label {
+    font-size: 15px;
+    color: #666;
+  }
+  
+  .month-selector {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: white;
+    color: #1a1a1a;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  
+  .month-selector:hover {
+    border-color: #999;
+  }
+  
+  .graph-container {
+    height: 300px;
+    position: relative;
+     right: -20px;
+    display: flex;
+    flex-direction: column-reverse;
+    padding-bottom: 24px;
+}
+
+.bars-container {
+    display: flex;
+    align-items: flex-end; /* Ensure bars align at the bottom */
+    height: 100%;
+    gap: 2px;
+}
+
+.bar-wrapper {
+  position: relative; /* To position the tooltip relative to each bar */
+  flex: 1;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  height: 100%;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 100%; /* Position above the bar */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.bar-wrapper:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.bar {
+    width: 100%;
+    background: #4477ff;
+    transition: height 0.3s ease, background-color 0.2s;
+    min-height: 1px;
+    cursor: pointer;
+}
+
+.bar:hover {
+    background: #2255dd;
+}
+
+.date-label {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 8px; /* Place the label at the bottom */
+    transform: rotate(-45deg);
+    transform-origin: bottom left; /* Adjust rotation point for better alignment */
+    white-space: nowrap;
+}
+
+  
+
+  
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    font-size: 16px;
+    color: #666;
+  }
+  
+  @media (max-width: 768px) {
+    .sales-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+  
+    .controls-section {
+      width: 100%;
+      justify-content: space-between;
+    }
+  
+    .graph-container {
+      height: 250px;
+    }
+  }
+  .no-data-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+  }
+  
+
+
+  

@@ -1,0 +1,110 @@
+.theme-toggle-btn {
+    position: fixed;
+    top: 0.7rem;
+    right: 1.5rem;
+    padding: 0.75rem;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 50;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .theme-toggle-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .theme-toggle-btn:active {
+    transform: scale(0.95);
+  }
+  
+  .theme-toggle-btn.dark {
+    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+  }
+  
+  .theme-toggle-btn.light {
+    background: linear-gradient(135deg, #ff8f00 0%, #ffeb3b 100%);
+  }
+  
+  .theme-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: white;
+  }
+  
+  .theme-icon.dark-icon {
+    color: #1a1a1a;
+  }
+  
+  /* Animation for icon transition */
+  .theme-toggle-btn .theme-icon {
+    transition: transform 0.3s ease;
+  }
+  
+  .theme-toggle-btn:hover .theme-icon {
+    transform: rotate(45deg);
+  }
+  
+  /* Optional: Add a subtle glow effect */
+  .theme-toggle-btn.dark {
+    box-shadow: 0 4px 12px rgba(0, 242, 254, 0.3);
+  }
+  
+  .theme-toggle-btn.light {
+    box-shadow: 0 4px 12px rgba(255, 143, 0, 0.3);
+  }
+  
+  /* Optional: Add a pulse animation on hover */
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(0, 242, 254, 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(0, 242, 254, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(0, 242, 254, 0);
+    }
+  }
+  
+  .theme-toggle-btn:hover.dark {
+    animation: pulse 1.5s infinite;
+  }
+  
+  @keyframes pulse-light {
+    0% {
+      box-shadow: 0 0 0 0 rgba(255, 143, 0, 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(255, 143, 0, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(255, 143, 0, 0);
+    }
+  }
+  
+  .theme-toggle-btn:hover.light {
+    animation: pulse-light 1.5s infinite;
+  }
+  
+  /* Make sure button doesn't get hidden under other elements */
+  .theme-toggle-btn {
+    position: fixed;
+    z-index: 1000;
+  }
+  
+  /* Add media query for smaller screens */
+  @media (max-width: 768px) {
+    .theme-toggle-btn {
+      top: 1rem;
+      right: 1rem;
+      padding: 0.5rem;
+    }
+    
+    .theme-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }

@@ -1,0 +1,20 @@
+{
+    "name": "Nirvana Token List",
+    "timestamp": "2025-04-28T00:00:00+00:00",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "patch": 0
+    },
+    "tokens": [
+      {
+        "chainId": 80002,
+        "address": "0xa982307d3043922A887BaFF069C4F69C8c2fBcAe",
+        "name": "Nirvana Token",
+        "symbol": "NSC",
+        "decimals": 18,
+        "logoURI": "https://gateway.pinata.cloud/ipfs/bdac71d9-3c8d-4f1e-bfbd-96534a7d4b58/logo.png"
+      }
+    ]
+  }
+  

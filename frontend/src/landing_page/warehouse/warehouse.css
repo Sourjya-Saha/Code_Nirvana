@@ -1,0 +1,900 @@
+/* General Shelf and Card Layout */
+
+/* Cart Sidebar Styling */
+
+
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  border: 1px solid  #4169E1;
+  border-radius: 0.5rem;
+  padding: 1rem;
+
+}
+
+
+
+.cart-item-details {
+  flex-grow: 1;
+}
+
+.cart-item-name {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.cart-item-quantity {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.quantity-label {
+  margin-right: 0.5rem;
+}
+
+.quantity-btn {
+  background-color: #e5e7eb;
+  color: #1f2937;
+  padding: 0.25rem 0.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 0 0.5rem;
+}
+
+.quantity-value {
+  font-weight: 500;
+}
+
+.cart-item-price {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.price-label {
+  font-weight: 500;
+  margin-right: 0.5rem;
+}
+
+.remove-item-btn {
+  background-color: transparent;
+  color: #9ca3af;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.cart-sidebar {
+  position: fixed;
+right: -00px;
+  top: 0;
+  width: 800px;
+  height: 100%;
+  background-color: #ffffff;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.cart-sidebar.visible {
+  right: -1000px;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #e0e0e0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.cart-header h2 {
+  font-size: 20px;
+  color: #333333;
+  font-weight: bold;
+  margin: 0;
+}
+
+.close-cart-icon {
+  cursor: pointer;
+  font-size: 24px;
+  color: #888888;
+}
+
+.empty-cart-message {
+  text-align: center;
+  font-size: 16px;
+  color: #888888;
+  padding: 20px;
+}
+
+.cart-items-container {
+  padding: 16px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+
+
+
+
+.cart-item-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-right: 12px;
+}
+
+.cart-item-details {
+  flex: 1;
+}
+
+.cart-item-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 4px;
+}
+
+.cart-item-quantity {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.quantity-label {
+  margin-right: 8px;
+  color: #555555;
+}
+
+.quantity-btn {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #cccccc;
+  background-color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333333;
+  border-radius: 4px;
+}
+
+.quantity-btn:hover {
+  background-color: #f8f8f8;
+}
+
+.quantity-value {
+  margin: 0 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.cart-item-price {
+  font-size: 14px;
+  color: #666666;
+}
+
+.price-label {
+  font-weight: bold;
+}
+
+.remove-item-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #ff6347;
+  font-size: 18px;
+  position: relative;
+  top: -66px;
+}
+.remove-item-btn:hover{
+  background-color: transparent;
+}
+
+
+.cart-footer {
+  padding: 16px;
+  border-top: 1px solid #e0e0e0;
+  background-color: #f9f9f9;
+}
+
+.cart-total {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.checkout-btn {
+  width: 100%;
+  background-color: #28a745;
+  color: #ffffff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.checkout-btn:hover {
+  background-color: #218838;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.shelf-container {
+  padding: 20px;
+}
+
+.shelf-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.product-list-warehouse {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Product Card Styling */
+.product-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 260px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  position: relative;
+  font-family: "Arial", sans-serif;
+}
+
+.product-image {
+  width: 80%;
+  height: auto;
+  margin-bottom: 12px;
+  border-radius: 8px;
+}
+
+.discount-banner {
+  background: #4caf50;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 8px;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  border-radius: 4px;
+}
+
+/* Product Information Styling */
+.product-name {
+  font-size: 22px; /* Prominent size */
+  font-weight: 700; /* Semi-bold for a clean look */
+  color: #1e88e5; /* A modern blue accent */
+  margin-bottom: 10px;
+  letter-spacing: 0.5px; /* Subtle letter spacing for elegance */
+  text-transform: capitalize; /* Consistent text style */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Adds subtle depth */
+  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease; /* Smooth animations */
+  cursor: pointer; /* Indicates interactivity */
+}
+
+.product-name:hover {
+  color: #1565c0; /* Darker blue for hover effect */
+  transform: translateY(-3px); /* Slight lift on hover */
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+
+.manufacturer {
+  font-size: 14px;
+  color: #757575;
+  margin-bottom: 12px;
+}
+
+.price {
+  font-size: 14px;
+  color: #757575;
+  text-decoration: line-through;
+  margin-bottom: 4px;
+}
+
+.original-price {
+  font-weight: normal;
+}
+
+.discounted-price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #388e3c;
+  margin-bottom: 16px;
+  margin-left: 23px;
+}
+
+/* Add to Cart Button */
+.add-to-cart-button {
+  background: #1e88e5;
+  margin-right: 0px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 13px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.add-to-cart-button:disabled {
+  background: red;
+  cursor: not-allowed;
+}
+
+/* Pagination Styling */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  gap: 8px;
+}
+
+.page-button {
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.page-button.active {
+  background: #1e88e5;
+  color: white;
+  border: none;
+}
+
+.page-button:hover:not(.active) {
+  background: #e0e0e0;
+}
+/* Eye Button */
+.eye-button {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  color: #1e88e5;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.eye-button:hover{
+  background-color: white;
+  font-size: 22px;
+}
+
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal Content */
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+  text-align: left;
+  font-family: "Arial", sans-serif;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h2 {
+  font-size: 24px;
+  color: #1e88e5;
+  margin-bottom: 20px;
+}
+
+.modal-content p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+
+
+.close-button:hover {
+  background: #d32f2f;
+}
+.product-actions{
+  display: flex;
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+.dash-board {
+    margin-left: 80px;
+    margin-top: 60px;
+  }
+  
+  .warehouse {
+    padding: 20px;
+    font-family: "Poppins";
+  }
+  .add_pres{
+   display: flex;
+  }
+  .add_pres .search-bar-ecom {
+    width: 20%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  .pres{
+    margin-top: 10px;
+  }
+  .shelf-container {
+    display: flex;
+    flex-direction: column;
+   
+    gap: 20px;
+    border-radius: 15px;  
+   /* Subtle background color */
+    padding: 20px; /* Padding for better spacing */
+  }
+  
+  .shelf {
+    border-radius: 10px;
+    background-color: #ffffff; /* White background for shelves */
+    /* Padding inside shelf */
+    padding-bottom: 20px;
+    transition: transform 0.2s, box-shadow 0.3s; /* Smooth transition */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  }
+  
+  .shelf:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
+  }
+  
+  .shelf-name {
+    background-color: #4169E1; /* Existing color */
+    color: white;
+    text-transform: uppercase;
+    border-top-left-radius: 10px;
+    letter-spacing: 0.05rem;
+    border-top-right-radius: 10px;
+    padding: 10px; /* Padding for better text positioning */
+    font-size: 1.7rem; /* Increased font size */
+    font-weight: 600; /* Font weight for emphasis */
+    text-align: center; /* Center text alignment */
+  }
+  
+  .text{
+    font-weight: 600;
+  }
+  
+  .product-list-warehouse {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  
+  .product-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    width: 350px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 10px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+    justify-content: center;
+  }
+  
+  .product-card:hover {
+    transform: scale(1.05); /* Scale effect */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+  }
+  
+  .product-image {
+    width: 170px;
+    height: 170px;
+    object-fit: cover;
+  }
+  
+  .view-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .product-details {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 1001;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+  }
+  
+  .product-details.show {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  
+  .product-details-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .product-details button {
+    margin-top: 20px;
+  }
+  
+  .available {
+    margin-left: 3px;
+    padding: 3px 7px;
+    border-radius: 20px;
+    font-weight: 600;
+    background-color: green;
+    color: white;
+  }
+  
+  .out-of-stock {
+    margin-left: 3px;
+    padding: 3px 7px;
+    border-radius: 20px;
+    font-weight: 600;
+    background-color: red;
+    color: white;
+  }
+  
+  /* Dark background overlay */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none;
+  }
+  
+  .overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .warehouse-head{
+    font-weight: 600;
+    font-family: "Poppins";
+    font-size: 40px;
+    margin-top: 10px;
+  }
+
+  
+  
+  /* Cart Icon Container */
+.cart-icon-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Cart Icon Style */
+.cart-icon {
+  font-size: 50px;  /* Icon size */
+  color: #fff;  /* White icon color */
+  background-color: #FF6F61;  /* Bright and attractive background */
+ padding: 10px; /* Adjusted padding to make it rectangular (top/bottom 10px, left/right 20px) */
+  border-radius: 8px;  /* Slightly rounded corners for a soft rectangular shape */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  /* Subtle shadow for depth */
+}
+
+/* Hover Effect */
+.cart-icon:hover {
+  transform: scale(1.1);  /* Slight zoom on hover */
+  background-color: #FF3D29;  /* Darker coral on hover */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);  /* Deeper shadow */
+}
+
+/* Cart Item Count (Badge) */
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #fff;  /* White background for the count */
+  color: #FF6F61;  /* Matching coral color for the count text */
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 50%;
+  min-width: 20px;  /* Ensures the badge is a circle */
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Shadow around the badge */
+}
+
+  
+  
+  .cart {
+    position: fixed;
+    right: -300px;
+    top: 0;
+    width: 300px;
+  
+    padding: 20px;
+    border-left: 1px solid #ccc;
+    height: 100%;
+    overflow-y: auto;
+    transition: right 0.3s ease;
+  }
+  
+  .cart.visible {
+    right: 0;
+  }
+ 
+  .remove-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  .close-cart-icon {
+    font-size: 24px; /* Size for the close icon */
+    background-color: red;
+    color: white; 
+    padding: 3px;/* Primary color for the icon */
+    cursor: pointer; 
+    border-radius: 15px;/* Pointer cursor on hover */
+    transition: color 0.3s; /* Smooth color transition */
+    margin-top: 6px;
+}
+
+.close-cart-icon:hover {
+    color:rgb(0, 0, 0); /* Darker color on hover for interaction feedback */
+}
+  
+  .ecom{
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+  }
+  .search-bar-ecom{
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #4b4b4b;
+  
+    transition: all 0.3s ease;
+  }
+  /* Styles for the cart sidebar */
+  .cart {
+    position: fixed; /* Keeps the cart in a fixed position on the screen */
+    right: 0; /* Aligns the cart to the right */
+    top: 0; /* Aligns the cart to the top */
+    width: 400px; /* Adjusted width for a more compact look */
+    height: 100%; /* Full height of the viewport */
+    background-color: #fefefe; /* Slightly off-white for a softer look */
+    box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1); /* More pronounced shadow for depth */
+    transform: translateX(100%); /* Initially off-screen */
+    transition: transform 0.3s ease-in-out; /* Smooth transition effect */
+    z-index: 100; /* Ensures the cart is on top of other elements */
+    padding: 20px; /* Padding for inner spacing */
+    overflow-y: auto; /* Allows scrolling if content overflows */
+    border-left: 2px solid #ececec; /* Subtle left border for separation */
+    border-radius: 10px 0 0 10px; /* Rounded left edges for a smoother look */
+}
+
+.cart.visible {
+  transform: translateX(0);
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+ 
+  margin-bottom: 20px;
+}
+
+.cart-items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  max-height: 80%;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 10px;
+  border-radius: 8px;
+ 
+}
+
+
+
+.cart-item-details {
+  flex-grow: 1;
+  margin-left: 10px;
+}
+
+.cart-item-name {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.quantity-control button {
+  padding: 5px 10px;
+  background-color: #ccc;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cart-item-price {
+  font-weight: bold;
+}
+
+.cart-total {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.remove-button {
+  background-color: #ff4d4d;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+  top:5px
+}
+
+.close-cart-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.popup-show {
+  position: fixed; /* Fix it to the viewport */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center it perfectly */
+  width: 400px; /* Set a fixed width */
+  background-color: white; /* Background color */
+  padding: 20px; /* Padding around the content */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Add shadow for better visibility */
+  border-radius: 10px; /* Smooth edges */
+  z-index: 1001; /* Ensure it's above other content */
+  opacity: 1; /* Full opacity */
+  transition: all 0.3s ease-in-out; /* Smooth transition */
+}
+
+.popup-show h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.popup-show p {
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+.popup-show button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.popup-show button:hover {
+  background-color: #0056b3;
+}
