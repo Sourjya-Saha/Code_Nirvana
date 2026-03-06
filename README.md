@@ -1,119 +1,233 @@
-<<<<<<< HEAD
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 🧬 Nirvana Smart-Chain
 
-## Available Scripts
+### A Blockchain-Powered Pharmaceutical Supply Chain Platform
 
-In the project directory, you can run:
+> **Hackathon-Winning Project by Team Code Nirvana 🏆**
+> Eliminating counterfeit medicines through decentralized trust, multi-layer security, and real-time traceability.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Overview
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Nirvana Smart-Chain** is a blockchain-based pharmaceutical supply chain solution designed to combat **drug counterfeiting**, improve **transparency**, and ensure **end-to-end traceability** of medicines.
 
-### `npm test`
+By integrating **blockchain, smart contracts, and real-time verification**, the platform enables manufacturers, distributors, pharmacies, and regulators to verify drug authenticity at every stage of the supply chain.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🎯 Problem Statement
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Counterfeit medicines:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Endanger patient lives
+* Cause massive financial losses
+* Break trust in healthcare systems
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Traditional supply chains lack:
 
-### `npm run eject`
+* Transparency
+* Tamper-proof records
+* Real-time verification
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 💡 Our Solution
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Nirvana Smart-Chain introduces a **decentralized drug verification ecosystem** using blockchain technology:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+* 🔐 **Immutable Blockchain Records**
+* 🧾 **Smart Contract–based Drug Registration**
+* 🔍 **Real-time Drug Traceability**
+* 🪙 **ERC-20 Token Integration**
+* 🌐 **Multi-stakeholder Access (Manufacturer → Distributor → Pharmacy → Consumer)**
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🧩 Key Features
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### ✅ Drug Authenticity Verification
 
-### Code Splitting
+Each drug batch is registered on the blockchain with a **unique cryptographic identity**.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 🔄 End-to-End Traceability
 
-### Analyzing the Bundle Size
+Track medicine movement across:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* Manufacturer
+* Distributor
+* Warehouse
+* Pharmacy
 
-### Making a Progressive Web App
+### 🛡️ Multi-Layer Security
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+* Blockchain immutability
+* Smart contract validation
+* Backend verification APIs
 
-### Advanced Configuration
+### 📊 Transparent Supply Chain
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Every transaction is:
 
-### Deployment
+* Time-stamped
+* Tamper-proof
+* Publicly verifiable
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### 🪙 Tokenized Ecosystem
 
-### `npm run build` fails to minify
+ERC-20 tokens are used for:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
+* Incentives
+* Transactions
+* System interactions
 
-# Drug Inventory and Supply Chain Management System
+---
 
-This project is a decentralized Drug Supply Chain Management System built using React for the frontend, Python (Flask) for the backend, and Solidity on the Ethereum blockchain. The system ensures transparency, traceability, and security in the supply chain of pharmaceutical drugs.
+## 🏗️ Tech Stack
 
-# Problem Statement
+### 🌐 Frontend
 
-- **Counterfeit Medicines:** Counterfeit drugs pose a major risk to public Smart and safety.Without a reliable way to verify the authenticity of medicines, consumers and Smartcare providers at risk of receiving substandard or fraudulent products.
-- **Inefficient Inventory Management:** Traditional inventory management systems often lack real-time tracking and reporting capabilities, leading to issues such as stockouts, overstocking, and inefficient resource utilization.
+* **React.js**
+* **Next.js**
+* Modern UI & responsive design
 
-- **Lack of Supply Chain Transparency:** The complexity of the pharmaceutical supply chain, which includes manufacturers, wholesalers, distributors, and retailers, can lead to gaps in accountability and traceability.
-This makes it difficult to pinpoint the source of issues or detect malpractices.
+### ⚙️ Backend
 
+* **Python**
+* REST APIs for blockchain interaction
+* Secure data handling
 
-# Solution
-- **Drug Inventory Management System:** We are developing a comprehensive drug inventory management system using Flask, Python, and React. This system will feature:
+### 🔗 Blockchain
 
+* **Solidity Smart Contracts**
+* **ERC-20 Token Standard**
+* **Polygon Amoy Testnet**
 
-- **Blockchain-Based Supply Chain Management:** To enhance supply chain transparency and combat counterfeit medicines, we are integrating blockchain technology into our system. This involves:
-Blockchain Integration: Using Solidity and Ethereum to create a blockchain-based supply chain network. This network will link all participants in the supply chain, including manufacturers, wholesalers, distributors, and retailers.
+### 🗄️ Database
 
-Traceability: Implementing smart contracts to record every transaction and movement of drugs across the supply chain. This will allow us to trace the origin of each product and verify its authenticity.
+* **MySQL**
+* Off-chain metadata & system records
 
-Malpractice Detection: By analyzing the blockchain data, we can identify any breaks in the supply chain or potential instances of malpractice, such as counterfeit products or unauthorized distribution.
+---
 
+## 🧠 System Architecture (High-Level)
 
-# Tech Stack
+```
+Frontend (React / Next.js)
+        |
+        v
+Backend APIs (Python)
+        |
+        v
+Blockchain Layer (Solidity + ERC-20)
+        |
+        v
+Polygon Amoy Testnet
+```
 
-- **Flask and Python:**
- Flask: A lightweight web framework for building the backend of the drug inventory management system. It provides a simple and flexible way to handle API requests, manage data, and implement business logic.
+---
 
-Python: The programming language used for backend development, data processing, and integration with various services.
+## 🛠️ Installation & Setup
 
-- **React:** React.js: A JavaScript library for building dynamic and responsive user interfaces.It will be used to develop the frontend of the inventory management system, providing users with interactive dashboards and real-time data visualization.
-- **Solidity and Ethereum:** 
-Solidity: A programming language for writing smart contracts on the Ethereum blockchain. We will use Solidity to create smart contracts that handle the recording and verification of transactions within the supply chain.
+### 1️⃣ Clone the Repository
 
-Ethereum: A decentralized blockchain platform that supports smart contracts and provides a secure and transparent environment for managing supply chain data.
+```bash
+git clone https://github.com/Sourjya-Saha/Nirvana-Smart-Chain-NSC.git
+cd Nirvana-Smart-Chain-NSC
+```
 
+---
 
-# Conclusion
-Our drug inventory and supply chain management system aims to address the critical issues facing the pharmaceutical industry by leveraging modern technologies. By combining Flask, Python, React, Solidity, and Ethereum, we are creating a robust solution that enhances inventory management, ensures drug authenticity, and provides complete transparency throughout the supply chain. 
+### 2️⃣ Frontend Setup
 
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
+---
 
+### 3️⃣ Backend Setup
 
->>>>>>> 960f6167fc57f43b1af833c534670277a75b7501
+```bash
+cd backend
+pip install -r requirements.txt
+python app.py
+```
+
+---
+
+### 4️⃣ Smart Contracts
+
+```bash
+cd frontend
+npx hardhat compile
+npx hardhat deploy --network amoy
+```
+
+> ⚠️ Make sure you have Polygon Amoy testnet configured in your wallet.
+
+---
+
+## 🔐 Environment Variables
+
+Create a `.env` file:
+
+```env
+DATABASE_URL=your_mysql_url
+PRIVATE_KEY=your_wallet_private_key
+RPC_URL=polygon_amoy_rpc_url
+```
+
+---
+
+## 🧪 Test Network
+
+* **Blockchain Network:** Polygon Amoy Testnet
+* **Token Standard:** ERC-20
+* **Smart Contracts:** Solidity
+
+---
+
+## 🏆 Achievements
+
+* 🥇 **Hackathon Winning Project**
+* 👥 Built by **Team Code Nirvana**
+* 🎯 Solves real-world pharmaceutical challenges
+* 🚀 Production-ready blockchain architecture
+
+---
+
+## 🛣️ Future Scope
+
+* 📱 Mobile App for consumers
+* 🔍 QR-based instant drug verification
+* 🤖 AI-based anomaly detection
+* 🌍 Mainnet deployment
+* 🏥 Government & hospital integrations
+
+---
+
+## 👨‍💻 Team Code Nirvana
+
+Built with passion, innovation, and purpose by **Team Code Nirvana**.
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## ⭐ Support
+
+If you find this project useful:
+
+* ⭐ Star the repository
+* 🐛 Report issues
+* 🤝 Contribute
+
+---
+
