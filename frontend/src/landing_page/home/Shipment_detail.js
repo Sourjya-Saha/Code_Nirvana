@@ -252,68 +252,79 @@ const contractAddress = contractConfig.registryAddress;
   };
 
 
-  const handleAddCart = async (cartId, manufacturerAddress, wholesalerAddress) => {
-    try {
-        // Helper function to check if address is empty (42 spaces)
-        const isAddressEmpty = (address) => !address || address.trim() === "                                          ";
-        
-        // Check addresses
-        const isWholesalerPresent = !isAddressEmpty(wholesalerAddress);
-        const isManufacturerPresent = !isAddressEmpty(manufacturerAddress);
-        
-        let apiUrl;
-        
-        if (isWholesalerPresent) {
-            // If wholesaler address is present, use whole inventory API
-            apiUrl = 'http://localhost:5000/addCartToProductsWholeInventory';
-            console.log("Calling whole inventory API - Wholesaler present");
-        } else if (isManufacturerPresent) {
-            // If manufacturer address is present, use regular add products API
-            apiUrl = 'http://localhost:5000/addCartToProducts';
-            console.log("Calling regular add products API - Manufacturer present");
-        } else {
-            addNotification('Error: Neither manufacturer nor wholesaler address found', 'error');
-            return;
-        }
+const handleAddCart = async (cartId, manufacturerAddress, wholesalerAddress) => {
+  try {
 
-        console.log(`Using API: ${apiUrl}`);
-        console.log('Wholesaler Address:', wholesalerAddress);
-        console.log('Manufacturer Address:', manufacturerAddress);
-        
-        const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                cart_id: cartId,
-                user_id: userId,
-            }),
-        });
+    const isAddressEmpty = (address) => {
+      if (!address) return true;
+      const trimmed = address.trim();
+      return trimmed === "" || address === " ".repeat(42);
+    };
 
-        const data = await response.json();
+    const isWholesalerPresent = !isAddressEmpty(wholesalerAddress);
+    const isManufacturerPresent = !isAddressEmpty(manufacturerAddress);
 
-        if (response.ok && data.inserted_product_ids) {
-            const productCount = data.inserted_product_ids.length;
-            const apiType = isWholesalerPresent ? "Whole Inventory" : "Regular";
-            
-            addNotification(
-                `Successfully added ${productCount} products from cart ${cartId} (${apiType} API).\n` +
-                `Product IDs: ${data.inserted_product_ids.join(', ')}`,
-                'success'
-            );
-        } else {
-            addNotification(
-                'Failed to add products to cart: No products were inserted', 
-                'error'
-            );
-        }
-    } catch (error) {
-        addNotification(
-            `Error adding products to cart: ${error.message}`, 
-            'error'
-        );
+    let apiUrl;
+
+    if (isWholesalerPresent) {
+      apiUrl = "http://localhost:5000/addCartToProductsWholeInventory";
+      console.log("Calling Whole Inventory API");
     }
+    else if (isManufacturerPresent) {
+      apiUrl = "http://localhost:5000/addCartToProducts";
+      console.log("Calling Manufacturer Inventory API");
+    }
+    else {
+      addNotification(
+        "Error: Neither manufacturer nor wholesaler address found",
+        "error"
+      );
+      return;
+    }
+
+    console.log("Manufacturer:", manufacturerAddress);
+    console.log("Wholesaler:", wholesalerAddress);
+    console.log("API:", apiUrl);
+
+    const response = await fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        cart_id: cartId,
+        user_id: userId,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok && data.inserted_product_ids) {
+
+      const productCount = data.inserted_product_ids.length;
+
+      addNotification(
+        `Successfully added ${productCount} products from cart ${cartId}`,
+        "success"
+      );
+
+    } else {
+
+      addNotification(
+        "Failed to add products to cart",
+        "error"
+      );
+
+    }
+
+  } catch (error) {
+
+    addNotification(
+      `Error adding products: ${error.message}`,
+      "error"
+    );
+
+  }
 };
 
 return(

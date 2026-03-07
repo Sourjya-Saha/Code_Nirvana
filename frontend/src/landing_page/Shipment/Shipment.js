@@ -168,13 +168,34 @@ const tokenAddress    = contractConfig.tokenAddress;
     }
   };
 
-  const registerCardTransaction = async () => {
+ const registerCardTransaction = async () => {
     if (!contract || !tokenContract) return;
     const { cardId, receiverAddressW, receiverAddressR, date } = formInput;
     try {
       const mergedW = receiverAddressW || "                                          ";
       const mergedR = receiverAddressR || "                                          ";
       const merged  = walletAddress + mergedW + mergedR + date + cardId;
+
+      // Pre-check wholesaler whitelist (only if address provided)
+      if (receiverAddressW && receiverAddressW.trim() && receiverAddressW.length === 42) {
+        showLoading('Verifying wholesaler address — checking whitelist status on-chain…');
+        const isWholesalerWhitelisted = await contract.isAddressWhitelisted(receiverAddressW);
+        if (!isWholesalerWhitelisted) {
+          showError('Wholesaler not whitelisted — the provided address is not authorised.');
+          return;
+        }
+      }
+
+      // Pre-check retailer whitelist (only if address provided)
+      if (receiverAddressR && receiverAddressR.trim() && receiverAddressR.length === 42) {
+        showLoading('Verifying retailer address — checking whitelist status on-chain…');
+        const isRetailerWhitelisted = await contract.isAddressWhitelisted(receiverAddressR);
+        if (!isRetailerWhitelisted) {
+          showError('Retailer not whitelisted — the provided address is not authorised.');
+          return;
+        }
+      }
+
       showLoading('Validating inputs — checking allowance and fee requirements…');
       const fee              = await contract.transactionFee();
       const currentAllowance = await tokenContract.allowance(walletAddress, contractAddress);
@@ -208,6 +229,7 @@ const tokenAddress    = contractConfig.tokenAddress;
       showSuccess(`Transaction registered! Cart ID "${cardId}" confirmed on-chain and saved.`);
     } catch (error) { handleTransactionError(error); }
   };
+
 
   const fetchCardTransactionWR = async () => {
     if (!contract) return;
