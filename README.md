@@ -3,17 +3,17 @@
 
 ### A Blockchain-Powered Pharmaceutical Supply Chain Platform
 
-> **Hackathon-Winning Project by Team Code Nirvana 🏆**
-> Eliminating counterfeit medicines through decentralized trust, multi-layer security, and real-time traceability.
-
 ---
 
 ## 🚀 Overview
 
+🎥 **Project Demonstration:**  
+Watch the working demo of **Nirvana Smart-Chain** here:  
+https://drive.google.com/file/d/15_sGRl-Bk8546jOyXU9_MJ-yy4t-Uqm4/view?usp=sharing
+
 **Nirvana Smart-Chain** is a blockchain-based pharmaceutical supply chain solution designed to combat **drug counterfeiting**, improve **transparency**, and ensure **end-to-end traceability** of medicines.
 
 By integrating **blockchain, smart contracts, and real-time verification**, the platform enables manufacturers, distributors, pharmacies, and regulators to verify drug authenticity at every stage of the supply chain.
-
 ---
 
 ## 🎯 Problem Statement
@@ -190,44 +190,11 @@ RPC_URL=polygon_amoy_rpc_url
 
 ---
 
-## 🏆 Achievements
-
-* 🥇 **Hackathon Winning Project**
-* 👥 Built by **Team Code Nirvana**
-* 🎯 Solves real-world pharmaceutical challenges
-* 🚀 Production-ready blockchain architecture
-
----
-
-## 🛣️ Future Scope
-
-* 📱 Mobile App for consumers
-* 🔍 QR-based instant drug verification
-* 🤖 AI-based anomaly detection
-* 🌍 Mainnet deployment
-* 🏥 Government & hospital integrations
-
----
-
 ## 👨‍💻 Team Code Nirvana
 
 Built with passion, innovation, and purpose by **Team Code Nirvana**.
 
 ---
 
-## 📜 License
 
-This project is licensed under the **MIT License**.
-
----
-
-## ⭐ Support
-
-If you find this project useful:
-
-* ⭐ Star the repository
-* 🐛 Report issues
-* 🤝 Contribute
-
----
 
