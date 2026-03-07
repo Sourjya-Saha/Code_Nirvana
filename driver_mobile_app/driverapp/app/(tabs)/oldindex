@@ -1,0 +1,597 @@
+import React, { useState, useRef, useEffect } from 'react';
+import { View, Text, TextInput, TouchableOpacity, Animated, Dimensions, Alert, ScrollView } from 'react-native';
+import { useRouter } from 'expo-router';
+import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { SocketProvider, useSocket } from '@/app/(tabs)/SocketContext';
+import { apiService } from '@/app/(tabs)/apiservices';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const { width } = Dimensions.get('window');
+
+interface Organization {
+  generated_unique_id: string;
+  user_id: string;
+  user_type: string;
+}
+
+const DriverAuthContent = () => {
+  const router = useRouter();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [option, setOption] = useState(1); // 1: Sign In, 2: Sign Up
+  const [organizations, setOrganizations] = useState<Organization[]>([]);
+  const [showOrgDropdown, setShowOrgDropdown] = useState(false);
+  const [selectedOrg, setSelectedOrg] = useState('');
+  const translateYAnim = useRef(new Animated.Value(0)).current;
+  const fadeAnim = useRef(new Animated.Value(1)).current;
+  const [isLoading, setIsLoading] = useState(false);
+  const { socket, isConnected } = useSocket();
+
+  useEffect(() => {
+    if (option === 2) {
+      fetchOrganizations();
+    }
+  }, [option]);
+
+  useEffect(() => {
+    let targetValue = option === 2 ? -39 : 0;
+
+    Animated.parallel([
+      Animated.timing(translateYAnim, {
+        toValue: targetValue,
+        duration: 400,
+        useNativeDriver: true,
+      }),
+      Animated.sequence([
+        Animated.timing(fadeAnim, {
+          toValue: 0,
+          duration: 200,
+          useNativeDriver: true,
+        }),
+        Animated.timing(fadeAnim, {
+          toValue: 1,
+          duration: 200,
+          useNativeDriver: true,
+        }),
+      ]),
+    ]).start();
+  }, [option]);
+
+  const fetchOrganizations = async () => {
+    try {
+      const response = await fetch('http://172.20.10.5:8000/fetch_users');
+      const data = await response.json();
+      if (data.users) {
+        setOrganizations(data.users);
+      }
+    } catch (error) {
+      Alert.alert('Error', 'Failed to fetch organizations');
+      console.error('Error fetching organizations:', error);
+    }
+  };
+
+  const handleLogin = async () => {
+    try {
+      if (!username || !password) {
+        Alert.alert('Error', 'Please enter both username and password');
+        return;
+      }
+  
+      setIsLoading(true);
+      const response = await apiService.loginDriver(username, password);
+      console.log('Login response:', response);
+  
+      if (!response || !response.unique_user_id) {
+        throw new Error('Invalid response from server');
+      }
+  
+      await AsyncStorage.setItem('driverId', response.unique_user_id.toString());
+      
+      if (isConnected && socket) {
+        socket.emit('user-role', { 
+          role: 'driver', 
+          driver_id: response.unique_user_id 
+        });
+      }
+  
+      router.push(`/routeTracking?driverId=${response.unique_user_id}`);
+    } catch (error) {
+      console.error('Login error:', error);
+      Alert.alert(
+        'Login Error', 
+        error.message || 'Failed to login. Please check your credentials and try again.'
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSignup = async () => {
+    try {
+      if (!username || !password || !repeatPassword || !selectedOrg) {
+        Alert.alert('Error', 'Please fill in all fields');
+        return;
+      }
+
+      if (password !== repeatPassword) {
+        Alert.alert('Error', 'Passwords do not match');
+        return;
+      }
+
+      if (password.length < 4) {
+        Alert.alert('Error', 'Password must be at least 4 characters long');
+        return;
+      }
+
+      setIsLoading(true);
+      const response = await apiService.signupDriver(
+        username,
+        password,
+        'driver',
+        selectedOrg
+      );
+
+      Alert.alert(
+        'Success',
+        'Account created successfully! Please login to continue.',
+        [
+          {
+            text: 'OK',
+            onPress: () => setOption(1) // Switch to login view
+          }
+        ]
+      );
+    } catch (error) {
+      Alert.alert(
+        'Signup Error',
+        error.message || 'Failed to create account. Please try again.'
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const selectOrganization = (org: Organization) => {
+    setSelectedOrg(org.generated_unique_id);
+    setShowOrgDropdown(false);
+  };
+
+  const renderInputIcon = (name) => (
+    <MaterialCommunityIcons name={name} size={24} color="#6B7280" style={styles.inputIcon} />
+  );
+
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      <View style={styles.background}>
+        <View style={styles.contentContainer}>
+          {/* App Logo and Title */}
+          <View style={styles.logoContainer}>
+            <MaterialIcons name="local-shipping" size={60} color="#FFFFFF" />
+            <Text style={styles.logoText}>Driver App</Text>
+            <Text style={styles.logoSubtext}>Track and manage your deliveries</Text>
+          </View>
+
+          {/* Header with Animation */}
+          <View style={styles.header}>
+            <Animated.View
+              style={[
+                styles.headerHeadings,
+                { 
+                  transform: [{ translateY: translateYAnim }],
+                  opacity: fadeAnim 
+                }
+              ]}
+            >
+              <Text style={styles.headerHeadingSpan}>Welcome Back</Text>
+              <Text style={styles.headerHeadingSpan}>Create Account</Text>
+            </Animated.View>
+          </View>
+
+          {/* Options */}
+          <View style={styles.options}>
+            {['Sign In', 'Sign Up'].map((text, index) => (
+              <TouchableOpacity 
+                key={text}
+                onPress={() => setOption(index + 1)}
+                style={[
+                  styles.optionButton,
+                  option === index + 1 && styles.activeOptionButton
+                ]}
+              >
+                <Text style={[
+                  styles.optionText,
+                  option === index + 1 && styles.activeOptionText
+                ]}>
+                  {text}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+
+          {/* Form */}
+          <Animated.View style={[styles.accountForm, { opacity: fadeAnim }]}>
+            <View style={styles.formFields}>
+              <View style={styles.inputContainer}>
+                {renderInputIcon('account')}
+                <TextInput
+                  style={styles.input}
+                  placeholder="Username"
+                  value={username}
+                  onChangeText={setUsername}
+                  placeholderTextColor="#9CA3AF"
+                  autoCapitalize="none"
+                  editable={!isLoading}
+                />
+              </View>
+
+              <View style={styles.inputContainer}>
+                {renderInputIcon('lock')}
+                <TextInput
+                  style={styles.input}
+                  placeholder="Password"
+                  secureTextEntry={!showPassword}
+                  value={password}
+                  onChangeText={setPassword}
+                  placeholderTextColor="#9CA3AF"
+                  editable={!isLoading}
+                />
+                <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+                  <MaterialCommunityIcons
+                    name={showPassword ? 'eye-off' : 'eye'}
+                    size={24}
+                    color="#6B7280"
+                  />
+                </TouchableOpacity>
+              </View>
+
+              {option === 2 && (
+                <>
+                  <View style={styles.inputContainer}>
+                    {renderInputIcon('lock-check')}
+                    <TextInput
+                      style={styles.input}
+                      placeholder="Repeat Password"
+                      secureTextEntry={!showPassword}
+                      value={repeatPassword}
+                      onChangeText={setRepeatPassword}
+                      placeholderTextColor="#9CA3AF"
+                      editable={!isLoading}
+                    />
+                  </View>
+
+                  <TouchableOpacity 
+                    style={styles.orgSelector}
+                    onPress={() => setShowOrgDropdown(!showOrgDropdown)}
+                    disabled={isLoading}
+                  >
+                    <Text style={styles.orgSelectorText}>
+                      {selectedOrg ? 
+                        organizations.find(org => org.generated_unique_id === selectedOrg)?.user_id :
+                        'Select Organization'}
+                    </Text>
+                    <MaterialIcons 
+                      name={showOrgDropdown ? "keyboard-arrow-up" : "keyboard-arrow-down"} 
+                      size={24} 
+                      color="#4A5568"
+                    />
+                  </TouchableOpacity>
+
+                  {showOrgDropdown && (
+                    <View style={styles.dropdownContainer}>
+                      {organizations.map((org) => (
+                        <TouchableOpacity
+                          key={org.generated_unique_id}
+                          style={styles.dropdownItem}
+                          onPress={() => selectOrganization(org)}
+                        >
+                          <Text style={styles.orgName}>{org.user_id}</Text>
+                          <Text style={styles.orgType}>({org.user_type})</Text>
+                        </TouchableOpacity>
+                      ))}
+                    </View>
+                  )}
+                </>
+              )}
+            </View>
+
+            <TouchableOpacity
+              style={[styles.submitButton, isLoading && styles.disabledButton]}
+              onPress={option === 1 ? handleLogin : handleSignup}
+              disabled={isLoading}
+            >
+              <Text style={styles.submitButtonText}>
+                {isLoading ? 'Processing...' : option === 1 ? 'Sign In' : 'Sign Up'}
+              </Text>
+            </TouchableOpacity>
+          </Animated.View>
+        </View>
+      </View>
+    </ScrollView>
+  );
+};
+
+export default function DriverAuthScreen() {
+  return (
+    <SocketProvider>
+      <DriverAuthContent />
+    </SocketProvider>
+  );
+}
+
+const styles = {
+  container: {
+    flexGrow: 1,
+  },
+  background: {
+    flex: 1,
+    backgroundColor: '#3182CE',
+  },
+  contentContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+    backgroundColor: 'rgba(49, 130, 206, 0.95)',
+  },
+  logoContainer: {
+    alignItems: 'center',
+    marginBottom: 40,
+  },
+  logoText: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+    marginTop: 20,
+    marginBottom: 10,
+  },
+  logoSubtext: {
+    fontSize: 16,
+    color: '#FFFFFF',
+    opacity: 0.9,
+    textAlign: 'center',
+  },
+  header: {
+    height: 30,
+    width: width * 0.8,
+    overflow: 'hidden',
+    marginBottom: 40,
+  },
+  headerHeadings: {
+    position: 'absolute',
+    width: '100%',
+  },
+  headerHeadingSpan: {
+    textAlign: 'center',
+    color: '#FFFFFF',
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginVertical: 3,
+  },
+  options: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    width: width * 0.8,
+    marginBottom: 30,
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    borderRadius: 15,
+    padding: 5,
+  },
+  optionButton: {
+    flex: 1,
+    paddingVertical: 12,
+    borderRadius: 10,
+  },
+  activeOptionButton: {
+    backgroundColor: '#FFFFFF',
+  },
+  optionText: {
+    textAlign: 'center',
+    color: '#FFFFFF',
+    fontSize: 16,
+    opacity: 0.7,
+  },
+  activeOptionText: {
+    color: '#3182CE',
+    fontWeight: 'bold',
+    opacity: 1,
+  },
+  accountForm: {
+    width: width * 0.8,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 20,
+    padding: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F3F4F6',
+    borderRadius: 10,
+    marginBottom: 15,
+    paddingHorizontal: 15,
+  },
+  inputIcon: {
+    marginRight: 10,
+  },
+  input: {
+    flex: 1,
+    paddingVertical: 15,
+    fontSize: 16,
+    color: '#1F2937',
+  },
+  orgSelector: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: 48,
+    backgroundColor: '#F3F4F6',
+    borderRadius: 10,
+    marginBottom: 15,
+    paddingHorizontal: 15,
+  },
+  orgSelectorText: {
+    color: '#4A5568',
+    fontSize: 16,
+  },
+  dropdownContainer: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 10,
+    marginBottom: 15,
+    maxHeight: 200,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  dropdownItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E2E8F0',
+  },
+  orgName: {
+    color: '#2D3748',
+    fontSize: 14,
+  },
+  orgType: {
+    color: '#718096',
+    fontSize: 12,
+    fontStyle: 'italic',
+  },
+  submitButton: {
+    marginTop: 10,
+    backgroundColor: '#3182CE',
+    paddingVertical: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 2,
+  },
+  disabledButton: {
+    backgroundColor: '#A0AEC0',
+  },
+  submitButtonText: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  // Scrollable content styles
+  scrollContainer: {
+    flexGrow: 1,
+  },
+  // Form field container
+  formFields: {
+    width: '100%',
+    marginBottom: 10,
+  },
+  // Additional dropdown styles
+  dropdownScrollView: {
+    maxHeight: 150,
+  },
+  dropdownItemSelected: {
+    backgroundColor: '#EBF8FF',
+  },
+  dropdownItemText: {
+    fontSize: 14,
+    color: '#2D3748',
+  },
+  // Error states
+  inputError: {
+    borderColor: '#FC8181',
+    borderWidth: 1,
+  },
+  errorText: {
+    color: '#E53E3E',
+    fontSize: 12,
+    marginTop: -10,
+    marginBottom: 10,
+    marginLeft: 5,
+  },
+  // Loading state
+  loadingOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 1000,
+  },
+  loadingText: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: 10,
+  },
+  // Link styles
+  linkText: {
+    color: '#3182CE',
+    textDecorationLine: 'underline',
+    fontSize: 14,
+    marginTop: 15,
+    textAlign: 'center',
+  },
+  // Additional button states
+  buttonPressed: {
+    opacity: 0.8,
+  },
+  // Organization dropdown specific styles
+  orgDropdownHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E2E8F0',
+  },
+  orgDropdownHeaderText: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#2D3748',
+  },
+  orgListContainer: {
+    maxHeight: 200,
+    borderRadius: 10,
+    overflow: 'hidden',
+  },
+  orgItemPressed: {
+    backgroundColor: '#F7FAFC',
+  },
+  // Additional form styling
+  formHeader: {
+    width: '100%',
+    marginBottom: 20,
+  },
+  formHeaderText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#2D3748',
+    textAlign: 'center',
+  },
+  separator: {
+    height: 1,
+    backgroundColor: '#E2E8F0',
+    marginVertical: 20,
+  },
+} 
