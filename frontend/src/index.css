@@ -14,3 +14,28 @@ code {
     monospace;
 }
 
+/* ===== Works for Chrome, Edge, Safari ===== */
+::-webkit-scrollbar {
+  width: 4px;       /* vertical scrollbar */
+  height: 4px;      /* horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #007BFF;   /* blue color */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0056b3;
+}
+
+
+/* ===== Works for Firefox ===== */
+* {
+  scrollbar-width: thin;              /* makes scrollbar thin */
+  scrollbar-color: #007BFF transparent;  /* thumb color track */
+}
