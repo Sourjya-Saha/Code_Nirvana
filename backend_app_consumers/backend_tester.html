@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipment Tracker</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Login Section -->
+        <div id="loginSection" class="mb-8">
+            <div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold mb-4">Shipment Tracker Login</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">User ID</label>
+                        <input type="text" id="userId" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Cart ID</label>
+                        <input type="text" id="cartId" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
+                    </div>
+                    <button onclick="verifyAccess()" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
+                        Access Shipment
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shipment Tracking Section -->
+        <div id="trackingSection" class="hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Map Section -->
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h3 class="text-xl font-semibold mb-4">Live Tracking</h3>
+                    <div id="map" class="h-96 rounded-lg"></div>
+                    <!-- Route Generation Controls -->
+                    <div class="mt-4 space-y-2">
+                        <button onclick="toggleRouteCreation()" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
+                            Generate New Route
+                        </button>
+                        <div id="routeCreationPanel" class="hidden space-y-2 p-4 bg-gray-50 rounded-md">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Start Location</label>
+                                <input type="text" id="startLocation" placeholder="Latitude, Longitude" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">End Location</label>
+                                <input type="text" id="endLocation" placeholder="Latitude, Longitude" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
+                            </div>
+                            <button onclick="generateRoute()" class="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600">
+                                Create Route
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shipment Details Section -->
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h3 class="text-xl font-semibold mb-4">Shipment Details</h3>
+                    <div id="shipmentDetails" class="space-y-4">
+                        <!-- Details will be populated here -->
+                    </div>
+
+                    <!-- User Access Management -->
+                    <div class="mt-6">
+                        <h4 class="text-lg font-semibold mb-4">Manage Access</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">New User ID</label>
+                                <input type="text" id="newUserId" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Role</label>
+                                <select id="userRole" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
+                                    <option value="manufacturer">Manufacturer</option>
+                                    <option value="wholesaler">Wholesaler</option>
+                                    <option value="retailer">Retailer</option>
+                                    <option value="driver">Driver</option>
+                                </select>
+                            </div>
+                            <button onclick="grantAccess()" class="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600">
+                                Grant Access
+                            </button>
+                        </div>
+                        <!-- Current Users List -->
+                        <div id="currentUsers" class="mt-4">
+                            <h5 class="text-md font-semibold mb-2">Current Users</h5>
+                            <div id="usersList" class="space-y-2">
+                                <!-- Users will be listed here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notifications Section -->
+            <div id="notifications" class="mt-6">
+                <div id="deviationAlerts" class="space-y-2">
+                    <!-- Route deviation alerts will appear here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let socket;
+        let map;
+        let driverMarker;
+        let routePath;
+        let isRouteCreationMode = false;
+        let currentParticipants = {};
+
+        // Initialize the map
+        function initializeMap() {
+            map = L.map('map').setView([0, 0], 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            // Add click handler for route creation
+            map.on('click', function(e) {
+                if (isRouteCreationMode) {
+                    const latlng = e.latlng;
+                    if (!document.getElementById('startLocation').value) {
+                        document.getElementById('startLocation').value = `${latlng.lat}, ${latlng.lng}`;
+                    } else if (!document.getElementById('endLocation').value) {
+                        document.getElementById('endLocation').value = `${latlng.lat}, ${latlng.lng}`;
+                    }
+                }
+            });
+        }
+
+        // Toggle route creation mode
+        function toggleRouteCreation() {
+            const panel = document.getElementById('routeCreationPanel');
+            panel.classList.toggle('hidden');
+            isRouteCreationMode = !panel.classList.contains('hidden');
+
+            if (isRouteCreationMode) {
+                map.getContainer().style.cursor = 'crosshair';
+            } else {
+                map.getContainer().style.cursor = '';
+            }
+        }
+
+        // Generate new route
+        function generateRoute() {
+            const startInput = document.getElementById('startLocation').value.split(',');
+            const endInput = document.getElementById('endLocation').value.split(',');
+
+            const routeData = {
+                cart_id: document.getElementById('cartId').value,
+                route_data: {
+                    waypoints: [
+                        { lat: parseFloat(startInput[0]), lng: parseFloat(startInput[1]) },
+                        { lat: parseFloat(endInput[0]), lng: parseFloat(endInput[1]) }
+                    ],
+                    estimated_delivery_time: new Date(Date.now() + 2 * 60 * 60 * 1000).toISOString() // 2 hours from now
+                }
+            };
+
+            socket.emit('route-created', routeData);
+            toggleRouteCreation();
+            clearRouteInputs();
+        }
+
+        // Clear route inputs
+        function clearRouteInputs() {
+            document.getElementById('startLocation').value = '';
+            document.getElementById('endLocation').value = '';
+        }
+
+        // Grant access to new user
+        async function grantAccess() {
+            const newUserId = document.getElementById('newUserId').value;
+            const role = document.getElementById('userRole').value;
+            const cartId = document.getElementById('cartId').value;
+
+            try {
+                const response = await fetch('http://localhost:8000/api/shipment/' + cartId + '/participants', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        user_id: newUserId,
+                        role: role
+                    })
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    alert('Access granted successfully');
+                    updateUsersList();
+                    document.getElementById('newUserId').value = '';
+                } else {
+                    alert('Failed to grant access: ' + data.error);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error granting access');
+            }
+        }
+
+        // Update users list
+        async function updateUsersList() {
+            const cartId = document.getElementById('cartId').value;
+            try {
+                const response = await fetch('http://localhost:8000/api/shipment/' + cartId + '/participants');
+                const data = await response.json();
+
+                currentParticipants = data;
+                const usersListElement = document.getElementById('usersList');
+                usersListElement.innerHTML = '';
+
+                Object.entries(data).forEach(([role, userId]) => {
+                    if (userId) {
+                        const userElement = document.createElement('div');
+                        userElement.className = 'flex justify-between items-center bg-gray-50 p-2 rounded';
+                        userElement.innerHTML = `
+                            <span>${role.replace('_id', '')}: ${userId}</span>
+                            <button onclick="revokeAccess('${userId}')" class="text-red-600 hover:text-red-800">
+                                Remove
+                            </button>
+                        `;
+                        usersListElement.appendChild(userElement);
+                    }
+                });
+            } catch (error) {
+                console.error('Error updating users list:', error);
+            }
+        }
+
+        // Revoke user access
+        async function revokeAccess(userId) {
+            const cartId = document.getElementById('cartId').value;
+            try {
+                const response = await fetch('http://localhost:8000/api/shipment/' + cartId + '/participants/' + userId, {
+                    method: 'DELETE'
+                });
+
+                if (response.ok) {
+                    alert('Access revoked successfully');
+                    updateUsersList();
+                } else {
+                    alert('Failed to revoke access');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error revoking access');
+            }
+        }
+
+                // Initialize the map
+        function initializeMap() {
+            map = L.map('map').setView([0, 0], 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+        }
+
+        // Verify shipment access
+        async function verifyAccess() {
+            const userId = document.getElementById('userId').value;
+            const cartId = document.getElementById('cartId').value;
+
+            try {
+                const response = await fetch('http://localhost:8000/api/shipment/verify-access', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ user_id: userId, cart_id: cartId })
+                });
+
+                const data = await response.json();
+
+                if (data.success && data.authorized) {
+                    document.getElementById('loginSection').classList.add('hidden');
+                    document.getElementById('trackingSection').classList.remove('hidden');
+
+                    initializeMap();
+                    initializeSocket(userId, cartId);
+                    displayShipmentDetails(data.shipment);
+                } else {
+                    alert('Access denied. Please check your credentials.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error verifying access.');
+            }
+        }
+
+        // Initialize Socket.IO connection
+        function initializeSocket(userId, cartId) {
+            socket = io('http://localhost:8000', {
+                query: {
+                    user_id: userId,
+                    cart_id: cartId
+                }
+            });
+
+            // Socket event listeners
+            socket.on('connect', () => {
+                console.log('Connected to server');
+                socket.emit('request-initial-state', { cart_id: cartId });
+            });
+
+            socket.on('initial-state', (data) => {
+                if (data.route) {
+                    displayRoute(data.route);
+                }
+            });
+
+            socket.on('driver-location-update', (data) => {
+                updateDriverLocation(data);
+            });
+
+            socket.on('route-deviation', (data) => {
+                displayDeviationAlert(data);
+            });
+
+            socket.on('route-broadcast', (data) => {
+                displayRoute(data.route_data);
+            });
+        }
+
+        // Update driver location on map
+        function updateDriverLocation(location) {
+            const latLng = [location.latitude, location.longitude];
+
+            if (!driverMarker) {
+                driverMarker = L.marker(latLng).addTo(map);
+            } else {
+                driverMarker.setLatLng(latLng);
+            }
+
+            map.setView(latLng);
+        }
+
+        // Display route on map
+        function displayRoute(routeData) {
+            if (routePath) {
+                map.removeLayer(routePath);
+            }
+
+            const waypoints = routeData.waypoints.map(wp => [wp.lat, wp.lng]);
+            routePath = L.polyline(waypoints, { color: 'blue' }).addTo(map);
+            map.fitBounds(routePath.getBounds());
+        }
+
+        // Display shipment details
+        function displayShipmentDetails(shipment) {
+            const detailsContainer = document.getElementById('shipmentDetails');
+            detailsContainer.innerHTML = `
+                <div class="space-y-2">
+                    <p><strong>Cart ID:</strong> ${shipment.cart_id}</p>
+                    <p><strong>Status:</strong> <span class="bg-green-100 text-green-800 px-2 py-1 rounded">${shipment.status || 'Active'}</span></p>
+                    <p><strong>Driver:</strong> ${shipment.user_name || 'Not assigned'}</p>
+                    <p><strong>Estimated Delivery:</strong> ${shipment.estimated_delivery_time || 'Not available'}</p>
+                </div>
+            `;
+        }
+
+        // Display route deviation alerts
+        function displayDeviationAlert(data) {
+            const alertsContainer = document.getElementById('deviationAlerts');
+            const alert = document.createElement('div');
+            alert.className = 'bg-red-100 border-l-4 border-red-500 text-red-700 p-4';
+            alert.innerHTML = `
+                <p class="font-bold">Route Deviation Detected</p>
+                <p>${data.message}</p>
+                <p class="text-sm">${new Date(data.timestamp).toLocaleString()}</p>
+            `;
+            alertsContainer.prepend(alert);
+
+            // Remove alert after 10 seconds
+            setTimeout(() => alert.remove(), 10000);
+        }
+
+    </script>
+</body>
+</html>

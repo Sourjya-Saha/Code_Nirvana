@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Razorpay Payment</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+    <h2>Order Payment</h2>
+    <button id="pay_button">Pay Now</button>
+
+    <script>
+        document.getElementById('pay_button').onclick = function() {
+            // Call your backend to get Razorpay order details
+            fetch('http://localhost:5000/get_razorpay_order_details', {  // Updated backend URL
+                method: 'GET',  // Use appropriate method (POST/GET) depending on your route
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                var options = {
+                    "key": "rzp_test_2EpPSCTb8XHFCk",  // Replace with your Razorpay key
+                    "amount": data.total_amount * 100,  // Amount in paise
+                    "currency": "INR",
+                    "name": "Your Company Name",
+                    "description": "Order Payment",
+                    "image": "https://yourcompanylogo.com/logo.png",  // Optional: Logo image
+                    "order_id": data.razorpay_order_id,  // Received from your backend
+                    "handler": function(response) {
+                        // Send payment details to your backend
+                        fetch('http://localhost:5000/confirm_order_payment', {  // Updated backend URL
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                razorpay_payment_id: response.razorpay_payment_id,
+                                razorpay_order_id: response.razorpay_order_id,
+                                razorpay_signature: response.razorpay_signature,
+                                temp_order_data: data.temp_order_data
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            alert(data.message);
+                            // Optionally, redirect to order confirmation page
+                        })
+                        .catch(error => {
+                            alert('Error in payment confirmation');
+                        });
+                    },
+                    "prefill": {
+                        "name": "John Doe",  // Replace with the customer's name
+                        "email": "johndoe@example.com",  // Replace with the customer's email
+                        "contact": "9999999999"  // Replace with the customer's phone number
+                    },
+                    "theme": {
+                        "color": "#F37254"  // Custom theme color
+                    }
+                };
+
+                var rzp1 = new Razorpay(options);
+                rzp1.open();
+            })
+            .catch(error => {
+                alert('Error fetching Razorpay order details');
+            });
+        };
+    </script>
+</body>
+</html>
