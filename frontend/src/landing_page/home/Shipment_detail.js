@@ -366,14 +366,14 @@ return(
                   </span>
                 </td>
                <td style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                  <button
+                  {/* <button
                     className={`ship-button ${
                       showTracker[index] ? "hide-tracking" : "show-tracking"
                     }`}
                     onClick={() => toggleTracker(index)}
                   >
                     {showTracker[index] ? "Hide Tracking" : "Show Tracking"}
-                  </button>
+                  </button> */}
                   <button
                       className="location-button"
                       onClick={() => handleSetLocation(shipment)}
