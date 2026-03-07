@@ -1,0 +1,1 @@
+This is the folder where the fastapi server temporarily saves the uploaded files.

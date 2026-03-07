@@ -899,7 +899,7 @@ const {
 
 
 
-      <PredictMedications/>
+      {/* <PredictMedications/> */}
     </div>
   );
 }

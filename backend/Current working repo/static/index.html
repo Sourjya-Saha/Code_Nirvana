@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Extractor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Document Extractor</h1>
+        <form id="uploadForm">
+            <label for="file_format">Choose Document Type:</label>
+            <select id="file_format" name="file_format">
+                <option value="prescription">Prescription</option>
+                <option value="patient_details">Patient Details</option>
+            </select>
+            <br><br>
+            <label for="file">Upload File:</label>
+            <input type="file" id="file" name="file" accept=".pdf,.jpeg,.jpg">
+            <br><br>
+            <button type="button" id="extractButton">Extract</button>
+        </form>
+        <div id="documentDisplay"></div>
+        <div id="extractedData">
+            <h2>Extracted Data</h2>
+            <div id="dataContainer"></div>
+        </div>
+        <button id="submitButton">Submit</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
